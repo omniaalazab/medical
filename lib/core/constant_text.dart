@@ -33,4 +33,6 @@ class ConstantText {
   static const String tryAgain = "Try Again";
   static const String clearAll = "Clear All";
   static const String notifications = "Notifications";
+  static const String dealsOfDay = "Deals of the Day";
+  static const String more = "More";
 }
