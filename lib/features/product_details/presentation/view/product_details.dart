@@ -25,25 +25,28 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   List<ProductModel> productModel = [
     ProductModel(
+      id: "1",
       productDescription: "",
       productName: "",
       imageUrl: AssetsData.maskGroup,
-      oldPrice: '100',
-      newPrice: '80',
+      oldPrice: 100,
+      newPrice: 80,
     ),
     ProductModel(
+      id: "2",
       productDescription: "",
       productName: "",
       imageUrl: AssetsData.maskGroup,
-      oldPrice: '120',
-      newPrice: '90',
+      oldPrice: 120,
+      newPrice: 90,
     ),
     ProductModel(
+      id: "3",
       productDescription: "",
       productName: "",
       imageUrl: AssetsData.maskGroup,
-      oldPrice: '120',
-      newPrice: '90',
+      oldPrice: 120,
+      newPrice: 90,
     ),
   ];
 
