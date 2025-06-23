@@ -53,7 +53,10 @@ class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(ConstantText.yourCart), elevation: 0),
+      appBar: AppBar(
+        title: Text(ConstantText.yourCart, style: Styles.textStyle16),
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
@@ -64,11 +67,18 @@ class _CartViewState extends State<CartView> {
                 children: [
                   Text(
                     "${cartItemModel.length} Items in your cart",
-                    style: Styles.textStyle14,
+                    style: Styles.textStyle14.copyWith(
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   Spacer(),
                   IconButton(icon: Icon(Icons.add), onPressed: () {}),
-                  Text(ConstantText.addMore, style: Styles.textStyle14),
+                  Text(
+                    ConstantText.addMore,
+                    style: Styles.textStyle14.copyWith(
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 2.h),
@@ -101,7 +111,7 @@ class _CartViewState extends State<CartView> {
               SizedBox(height: 5.h),
               Text(
                 ConstantText.paymentSummary,
-                style: Styles.textStyle16.copyWith(fontWeight: FontWeight.bold),
+                style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 2.h),
               PaymentSummaryRow(

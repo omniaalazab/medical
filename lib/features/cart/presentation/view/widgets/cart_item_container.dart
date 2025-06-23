@@ -42,8 +42,8 @@ class CartItemContainer extends StatelessWidget {
         children: [
           // Product Image
           Container(
-            width: 16.w,
-            height: 16.w,
+            width: 20.w,
+            height: 24.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: Colors.grey.shade100,
@@ -99,6 +99,7 @@ class CartItemContainer extends StatelessWidget {
                   subTitle,
                   style: Styles.textStyle13.copyWith(
                     color: Colors.grey.shade600,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
 

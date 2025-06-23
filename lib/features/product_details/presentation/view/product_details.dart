@@ -115,8 +115,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   controller: productController,
                   count: productModel.length,
                   effect: WormEffect(
-                    dotHeight: 2.h,
-                    dotWidth: 4.w,
+                    dotHeight: 1.h,
+                    dotWidth: 2.w,
                     dotColor: Colors.grey,
                     activeDotColor: ColorsHelper.blue,
                   ),
@@ -146,7 +146,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                           ),
                         ],
                       ),
-                      Text("Etiam mollis ", style: Styles.textStyle18),
+                      Text(
+                        "Etiam mollis ",
+                        style: Styles.textStyle18.copyWith(
+                          color: Colors.grey.shade400,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(width: 2.h),
@@ -188,14 +194,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ],
               ),
               SizedBox(height: 2.h),
-              Text(ConstantText.productDetails, style: Styles.textStyle18),
+              Text(ConstantText.productDetails, style: Styles.textStyle16),
               Text(
                 "Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ut nisi odio. Nulla facilisi. Nunc risus massa, gravida id egestas a, pretium vel tellus. Praesent feugiat diam sit amet pulvinar finibus. Etiam et nisi aliquet, accumsan nisi sit.",
+                style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w300),
               ),
               SizedBox(height: 2.h),
-              Text(ConstantText.ingredients, style: Styles.textStyle18),
+              Text(ConstantText.ingredients, style: Styles.textStyle16),
               Text(
                 "Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ut nisi odio. Nulla facilisi. Nunc risus massa, gravida id egestas a, pretium vel tellus. Praesent feugiat diam sit amet pulvinar finibus. Etiam et nisi aliquet, accumsan nisi sit.",
+                style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w300),
               ),
 
               SizedBox(height: 4.h),
@@ -222,18 +230,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                           Icon(Icons.star, color: ColorsHelper.amber, size: 30),
                         ],
                       ),
-                      Text(
-                        "929 Ratings",
-                        style: Styles.textStyle14.copyWith(
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        "and 257 Reviews",
-                        style: Styles.textStyle14.copyWith(
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      Text("929 Ratings", style: Styles.textStyle14),
+                      Text("and 257 Reviews", style: Styles.textStyle14),
                     ],
                   ),
                   SizedBox(width: 4.w),
@@ -282,7 +280,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               Text("Erric Hoffman", style: Styles.textStyle14),
               Text(
                 "Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ut nisi odio. Nulla facilisi. Nunc risus massa, gravida id egestas ",
-                style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w400),
+                style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w300),
               ),
               SizedBox(height: 5.h),
               CustomElevatedButton(
@@ -304,9 +302,12 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget _buildDateBrandRow({required String title, required String value}) {
     return Row(
       children: [
-        Text(title, style: Styles.textStyle18),
+        Text(title, style: Styles.textStyle16),
         SizedBox(width: 10.w),
-        Text(value, style: Styles.textStyle14),
+        Text(
+          value,
+          style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w300),
+        ),
       ],
     );
   }

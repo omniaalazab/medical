@@ -69,8 +69,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     });
                   },
                 ),
-                title: Text("office"),
-                subtitle: Text("(205) 555-024\n1786 Wheeler Bridge"),
+                title: Text(
+                  "office",
+                  style: Styles.textStyle14.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                subtitle: Text(
+                  "(205) 555-024\n1786 Wheeler Bridge",
+                  style: Styles.textStyle13.copyWith(
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
                 trailing: IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: () {
@@ -115,8 +125,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     });
                   },
                 ),
-                title: Text("Home"),
-                subtitle: Text("(205) 555-024\n1786 Wheeler Bridge"),
+                title: Text(
+                  "Home",
+                  style: Styles.textStyle14.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                subtitle: Text(
+                  "(205) 555-024\n1786 Wheeler Bridge",
+                  style: Styles.textStyle13.copyWith(
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
                 trailing: IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: () {
@@ -139,7 +159,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               children: [
                 Icon(Icons.add),
                 TextButton(
-                  child: Text(ConstantText.addAddress),
+                  child: Text(
+                    ConstantText.addAddress,
+                    style: Styles.textStyle14,
+                  ),
                   onPressed: () {},
                 ),
               ],
@@ -157,7 +180,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
                 title: Text(
                   ConstantText.cashOnDelivery,
-                  style: Styles.textStyle14,
+                  style: Styles.textStyle14.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 trailing: RadioButtonAddress(
                   index: index + 2,
