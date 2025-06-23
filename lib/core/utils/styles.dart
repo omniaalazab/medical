@@ -19,7 +19,7 @@ abstract class Styles {
   );
   static const textStyle14 = TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w400,
     fontFamily: "Overpass",
   );
   static const textStyle16 = TextStyle(
