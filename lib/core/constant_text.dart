@@ -31,4 +31,6 @@ class ConstantText {
   static const String yourCartEmpty = "Your cart is empty!";
   static const String noInternetConnection = "No network connection";
   static const String tryAgain = "Try Again";
+  static const String clearAll = "Clear All";
+  static const String notifications = "Notifications";
 }
