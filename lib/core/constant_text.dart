@@ -11,4 +11,20 @@ class ConstantText {
   static const String brandName = "Brand Name";
   static const String yourCart = "Your cart";
   static const String paymentSummary = "Payment Summary";
+  static const String checkout = "Checkout";
+  static const String total = "Total";
+  static const String placeOrder = "Place Order";
+  static const String addMore = "Add more";
+  static const String orderTotal = "Order Total";
+  static const String itemsDiscount = "Items Discount";
+  static const String couponDiscount = "Coupon Discount";
+  static const String shipping = "Shipping";
+  static const String deliveryAddress = "Delivery Address";
+  static const String editAdress = "Edit Address";
+  static const String addAddress = "Add address";
+  static const String paymentMethod = "Payment Method";
+  static const String cashOnDelivery = "Cash on Delivery";
+  static const String payNow = "Pay Now";
+  static const String thankYou = "Thank you";
+  static const String continueOrder = " Continue Order";
 }
