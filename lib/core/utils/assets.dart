@@ -9,4 +9,13 @@ class AssetsData {
   static const String sucess = "assets/images/sucess.png";
   static const String cart = "assets/images/cart.png";
   static const String noInternet = "assets/images/nointernet.png";
+  static const String home = "assets/images/btn_home.svg";
+  static const String profile = "assets/images/btn_user_icon.svg";
+  static const String shopping = "assets/images/btn_shopping_cart.svg";
+  static const String saveHome = "assets/images/savehome.png";
+  static const String productImage = "assets/images/productImage.png";
+  static const String home1 = "assets/images/home.png";
+  static const String user = "assets/images/user.png";
+  static const String shopping1 = "assets/images/shipping.png";
+  static const String notifications1 = "assets/images/notification.png";
 }
