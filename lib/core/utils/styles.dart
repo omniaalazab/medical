@@ -7,6 +7,11 @@ abstract class Styles {
     fontFamily: "Overpass",
     decoration: TextDecoration.none,
   );
+  static const textStyle10 = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    fontFamily: "Overpass",
+  );
   static const textStyle12 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w600,
