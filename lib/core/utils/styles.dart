@@ -33,6 +33,11 @@ abstract class Styles {
     fontWeight: FontWeight.w600,
     fontFamily: "Overpass",
   );
+  static const textStyle24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+    fontFamily: "Overpass",
+  );
   static const textStyle33 = TextStyle(
     fontSize: 33,
     fontWeight: FontWeight.w600,
