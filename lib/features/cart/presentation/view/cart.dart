@@ -8,6 +8,7 @@ import 'package:medical/features/cart/data/cart_model.dart';
 
 import 'package:medical/features/cart/presentation/view/widgets/cart_item_container.dart';
 import 'package:medical/features/cart/presentation/view/widgets/payment_summery_row.dart';
+import 'package:medical/features/checkout/presentation/view/checkout_screen.dart';
 import 'package:sizer/sizer.dart';
 
 class CartView extends StatefulWidget {
@@ -18,7 +19,7 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  List<CartItemModel> cartModel = [
+  List<CartItemModel> cartItemModel = [
     CartItemModel(
       id: "1",
       productId: "1",
@@ -41,6 +42,14 @@ class _CartViewState extends State<CartView> {
     ),
   ];
   int portion = 1;
+
+  double calculateTotalCartPrice(List<CartItemModel> cartItems) {
+    return cartItems.fold(
+      0.0,
+      (total, item) => total + (item.price * item.quantity),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,16 +62,19 @@ class _CartViewState extends State<CartView> {
             children: [
               Row(
                 children: [
-                  Text("2 Items in your cart", style: Styles.textStyle14),
+                  Text(
+                    "${cartItemModel.length} Items in your cart",
+                    style: Styles.textStyle14,
+                  ),
                   Spacer(),
                   IconButton(icon: Icon(Icons.add), onPressed: () {}),
-                  Text("Add more", style: Styles.textStyle14),
+                  Text(ConstantText.addMore, style: Styles.textStyle14),
                 ],
               ),
               SizedBox(height: 2.h),
               ListView.builder(
                 itemBuilder: (_, index) {
-                  final item = cartModel[index];
+                  final item = cartItemModel[index];
                   return CartItemContainer(
                     imageName: item.imageUrl,
                     title: item.title,
@@ -81,7 +93,7 @@ class _CartViewState extends State<CartView> {
                     },
                   );
                 },
-                itemCount: cartModel.length,
+                itemCount: cartItemModel.length,
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
               ),
@@ -92,20 +104,39 @@ class _CartViewState extends State<CartView> {
                 style: Styles.textStyle16.copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 2.h),
-              PaymentSummaryRow(title: "Order Total", value: "228.80"),
-              PaymentSummaryRow(title: "Items Discount", value: "- 28.80"),
-              PaymentSummaryRow(title: "Coupon Discount", value: "-15.80"),
-
-              PaymentSummaryRow(title: "Shipping", value: "Free"),
               PaymentSummaryRow(
-                title: "Total",
-                value: "-Rs.185.00",
+                title: ConstantText.orderTotal,
+                value: calculateTotalCartPrice(cartItemModel).toString(),
+              ),
+              PaymentSummaryRow(
+                title: ConstantText.itemsDiscount,
+                value: "- 28.80",
+              ),
+              PaymentSummaryRow(
+                title: ConstantText.couponDiscount,
+                value: "-15.80",
+              ),
+
+              PaymentSummaryRow(title: ConstantText.shipping, value: "Free"),
+              PaymentSummaryRow(
+                title: ConstantText.total,
+                value: "RS.${calculateTotalCartPrice(cartItemModel)}",
                 textStyle: Styles.textStyle16,
               ),
               SizedBox(height: 2.h),
               CustomElevatedButton(
-                buttonText: "Place Order",
-                onPressedFunction: () {},
+                buttonText: ConstantText.placeOrder,
+                onPressedFunction: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => CheckoutScreen(
+                        cartItemModel: cartItemModel,
+                        total: calculateTotalCartPrice(cartItemModel),
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           ),
