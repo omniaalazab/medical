@@ -27,4 +27,8 @@ class ConstantText {
   static const String payNow = "Pay Now";
   static const String thankYou = "Thank you";
   static const String continueOrder = " Continue Order";
+  static const String whoops = "Whoops";
+  static const String yourCartEmpty = "Your cart is empty!";
+  static const String noInternetConnection = "No network connection";
+  static const String tryAgain = "Try Again";
 }
