@@ -5,4 +5,6 @@ class AssetsData {
   static const String addCart = "assets/images/addCart.svg";
   static const String medicine = "assets/images/medicine.png";
   static const String medicine2 = "assets/images/medicine2.png";
+  static const String payment = "assets/images/payment.png";
+  static const String sucess = "assets/images/sucess.png";
 }
