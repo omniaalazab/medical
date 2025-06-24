@@ -1,13 +1,17 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:medical/features/category_listing/presentation/view/category_listing.dart';
-import 'package:medical/features/home/presentation/view/home.dart';
-import 'package:medical/features/login/presentation/view/profile_screen.dart';
-import 'package:medical/features/product_details/presentation/view/product_details.dart';
+
+import 'package:medical/features/login/presentation/view/splash_screen.dart';
+
 import 'package:sizer/sizer.dart';
 
-
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: false,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,8 +25,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
 
-          home: CategoryListing(),
-
+          home: SplashScreen(),
         );
       },
     );
