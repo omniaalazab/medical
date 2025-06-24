@@ -31,7 +31,10 @@ class ProfileScreen extends StatelessWidget {
                   children: const [
                     Text(
                       'Hi, Rahul kanjariya',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(height: 4),
                     Text(
@@ -49,31 +52,6 @@ class ProfileScreen extends StatelessWidget {
             buildListTile(Icons.help_outline, 'Faq'),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          const BottomNavigationBarItem(icon: Icon(Icons.notifications_none), label: ''),
-          BottomNavigationBarItem(
-            icon: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Icon(Icons.add, color: Colors.white),
-            ),
-            label: '',
-          ),
-          const BottomNavigationBarItem(icon: Icon(Icons.receipt_long), label: ''),
-          const BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-        ],
       ),
     );
   }
