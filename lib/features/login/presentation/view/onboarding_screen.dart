@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/features/login/presentation/view/login.dart';
+import 'package:sizer/sizer.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -18,6 +19,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 15.h),
             Image.asset(AssetsData.onboarding1, width: 256, height: 284),
 
             SizedBox(height: 20),
