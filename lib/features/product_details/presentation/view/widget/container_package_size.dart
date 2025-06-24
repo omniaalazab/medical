@@ -28,16 +28,16 @@ class ContainerPackageSize extends StatelessWidget {
           children: [
             Text(
               price,
-              style: Styles.textStyle14.copyWith(
+              style: Styles.textStyle16.copyWith(
                 color: textColor,
                 fontWeight: FontWeight.w700,
               ),
             ),
             Text(
               noPallets,
-              style: Styles.textStyle14.copyWith(
+              style: Styles.textStyle12.copyWith(
                 color: textColor,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ],
