@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical/features/category_listing/presentation/view/category_listing.dart';
 import 'package:medical/features/home/presentation/view/home.dart';
 import 'package:medical/features/login/presentation/view/profile_screen.dart';
 import 'package:medical/features/product_details/presentation/view/product_details.dart';
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ProfileScreen(),
+
+          home: CategoryListing(),
+
         );
       },
     );
