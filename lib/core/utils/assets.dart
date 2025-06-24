@@ -22,4 +22,5 @@ class AssetsData {
   static const String notifications1 = "assets/images/notification.png";
   static const String onboarding1 = "assets/images/onboarding1.jpg";
   static const String onboarding2 = "assets/images/onboarding2.jpg";
+  static const String logo = "assets/images/logo.png";
 }
