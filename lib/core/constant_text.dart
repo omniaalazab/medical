@@ -35,4 +35,7 @@ class ConstantText {
   static const String notifications = "Notifications";
   static const String dealsOfDay = "Deals of the Day";
   static const String more = "More";
+  static const String diabetesCare = "Diabetes Care";
+  static const String categories = "Categories";
+  static const String allProduct = "All Products";
 }
