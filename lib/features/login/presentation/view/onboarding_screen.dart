@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical/core/utils/assets.dart';
 import 'package:medical/features/login/presentation/view/login.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -17,21 +18,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            
-            Image.asset(
-              'assets/images/splash_image_1.png',
-              width: 256,
-              height: 284,
-            ),
+            Image.asset(AssetsData.onboarding1, width: 256, height: 284),
 
-            
             SizedBox(height: 20),
 
-            Image.asset(
-              'assets/images/splash_details.png',
-              width: 255,
-              height: 152,
-            ),
+            Image.asset(AssetsData.onboarding2, width: 255, height: 152),
 
             Spacer(),
 
@@ -40,19 +31,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-          
                   TextButton(
                     onPressed: null,
                     child: Text(
                       'Skip',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[400],
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.grey[400]),
                     ),
                   ),
 
-        
                   Row(
                     children: [
                       _buildDot(true),
@@ -61,36 +47,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ],
                   ),
 
-             
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
-                        ),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
                     child: Text(
                       'Next',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.blue,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
                     ),
                   ),
                 ],
               ),
             ),
 
-      
             SizedBox(height: 24),
           ],
         ),
       ),
     );
   }
-
 
   Widget _buildDot(bool isActive) {
     return Container(

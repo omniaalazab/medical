@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medical/core/utils/assets.dart';
+import 'package:medical/features/home/presentation/view/home.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,16 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-             
-              Image.asset(
-                'assets/images/logo_login.png',
-                width: 289,
-                height: 125,
-              ),
+              Image.asset(AssetsData.sucess, width: 289, height: 125),
 
               SizedBox(height: 100),
 
-             
               Text(
                 'Please Enter your Mobile Number\nto Login/Sign Up',
                 textAlign: TextAlign.start,
@@ -44,15 +40,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 35),
 
-           
               TextField(
                 controller: _phoneController,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   hintText: '+91 9265614292',
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 20,
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25), 
+                    borderRadius: BorderRadius.circular(25),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
@@ -67,18 +65,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 35),
 
-              
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
                     print('Phone: ${_phoneController.text}');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF4157FF),
                     padding: EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25), 
+                      borderRadius: BorderRadius.circular(25),
                     ),
                   ),
                   child: Text(
