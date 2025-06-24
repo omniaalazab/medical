@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:medical/features/login/presentation/view/onboarding_screen.dart';
 
-
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -14,10 +15,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(Duration(seconds: 4), () {
       Navigator.pushReplacement(
-  context,
-  MaterialPageRoute(builder: (context) => OnboardingScreen()),
-);
- 
+        context,
+        MaterialPageRoute(builder: (context) => OnboardingScreen()),
+      );
     });
   }
 
@@ -27,17 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-    
-          Image.asset(
-            'assets/images/logo_background.png',
-            fit: BoxFit.cover,
-          ),
+          Image.asset('assets/images/logo_background.png', fit: BoxFit.cover),
 
-          Container(
-            color: Color(0xFF4157FF).withOpacity(0.9), 
-          ),
+          Container(color: Color(0xFF4157FF).withOpacity(0.9)),
 
-    
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -45,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 alignment: Alignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/logo_info.png',
+                    'assets/images/logo.png',
                     width: 289,
                     height: 125,
                   ),
