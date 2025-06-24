@@ -20,4 +20,6 @@ class AssetsData {
   static const String user = "assets/images/user.png";
   static const String shopping1 = "assets/images/shipping.png";
   static const String notifications1 = "assets/images/notification.png";
+  static const String onboarding1 = "assets/images/onboarding1.jpg";
+  static const String onboarding2 = "assets/images/onboarding2.jpg";
 }
