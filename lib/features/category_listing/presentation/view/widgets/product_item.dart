@@ -25,7 +25,7 @@ class ProductItem extends StatelessWidget {
         // Navigate to product details page
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProductDetails()),
+          MaterialPageRoute(builder: (context) => ProductDetails(productId: 1)),
         );
       },
       child: Container(
