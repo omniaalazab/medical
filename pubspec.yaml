@@ -40,6 +40,12 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   animated_bottom_navigation_bar: ^1.4.0
   device_preview: ^1.2.0
+  dio: ^5.8.0+1
+  dartz: ^0.10.1
+  get_it: ^8.0.3
+  flutter_bloc: ^9.1.1
+  connectivity_plus: ^6.1.4
+  flutter_stripe: ^11.5.0
 
 dev_dependencies:
   flutter_test:
