@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medical/core/utils/styles.dart';
 import 'package:medical/features/category_listing/presentation/view/category_listing.dart';
-import 'package:medical/features/product_details/data/models/product_model.dart';
+import 'package:medical/core/models/product_model.dart';
 import 'package:sizer/sizer.dart';
 
 class GridViewBuilder extends StatelessWidget {

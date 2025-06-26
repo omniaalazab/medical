@@ -1,27 +1,23 @@
 import 'package:dio/dio.dart';
-import 'package:medical/features/product_details/data/models/product_model.dart';
+import 'package:medical/core/api/endpoints.dart';
+import 'package:medical/core/models/product_model.dart';
 
-class ProductApiService {
+class ApiService {
   final Dio dio;
 
-  ProductApiService({required this.dio});
+  ApiService({required this.dio});
 
-  static const String baseUrl =
-      'https://medical.digital-vision-solutions.com/api';
+  
 
-  Future<List<ProductModel>> fetchAllProducts() async {
-    final response = await dio.get('$baseUrl/products');
-
+  Future<dynamic> get( {required String endPoint}) async {
+    final response = await dio.get('${Endpoints.baseUrl}$endPoint');
     if (response.statusCode == 200) {
-      final data = response.data['data'] as List;
-      return data.map((e) => ProductModel.fromJson(e)).toList();
-    } else {
-      throw Exception('Failed to load products');
-    }
-  }
+    return response.data ;
+    
+  }}
 
   Future<ProductModel> fetchSingleProduct(int id) async {
-    final response = await dio.get('$baseUrl/products/$id');
+    final response = await dio.get('${Endpoints.baseUrl}/products/$id');
 
     if (response.statusCode == 200) {
       final data = response.data['data'];

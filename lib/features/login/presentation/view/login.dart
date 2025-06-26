@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical/core/utils/assets.dart';
+
 import 'package:medical/features/home/presentation/view/home.dart';
 
 class LoginScreen extends StatefulWidget {

@@ -24,9 +24,9 @@ void setupLocator() {
 
   // Default Dio for other APIs
   sl.registerLazySingleton(() => Dio());
-  sl.registerLazySingleton(() => ProductApiService(dio: sl()));
+  sl.registerLazySingleton(() => ApiService(dio: sl()));
   sl.registerLazySingleton(() => ProductRepository(sl()));
-  sl.registerFactory(() => ProductCubit(sl()));
+  sl.registerFactory(() => ProductDetailsCubit(sl()));
   sl.registerLazySingleton(() => PaymentRepository());
   sl.registerFactory(() => PaymentCubit(sl<PaymentRepository>()));
 }

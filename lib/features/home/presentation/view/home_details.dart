@@ -6,7 +6,7 @@ import 'package:medical/core/utils/colors.dart';
 import 'package:medical/core/utils/styles.dart';
 import 'package:medical/features/home/presentation/view/widget/category_item.dart';
 import 'package:medical/features/home/presentation/view/widget/gridview_builder.dart';
-import 'package:medical/features/product_details/data/models/product_model.dart';
+import 'package:medical/core/models/product_model.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeDetails extends StatefulWidget {

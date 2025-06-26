@@ -5,7 +5,7 @@ import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/colors.dart';
 import 'package:medical/features/cart/presentation/view/cart.dart';
 import 'package:medical/features/home/presentation/view/home_details.dart';
-import 'package:medical/features/login/presentation/view/profile_screen.dart';
+import 'package:medical/features/profile/presentation/views/profile_screen.dart';
 import 'package:medical/features/notification/presentation/view/notification.dart';
 import 'package:sizer/sizer.dart';
 

@@ -47,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             buildListTile(Icons.edit, 'Edit Profile'),
-            buildListTile(Icons.list_alt, 'My orders'),
+            buildListTile(Icons.access_alarm_rounded, 'My orders'),
             buildListTile(Icons.credit_card, 'Billing'),
             buildListTile(Icons.help_outline, 'Faq'),
           ],

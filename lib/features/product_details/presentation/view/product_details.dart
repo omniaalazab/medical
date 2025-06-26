@@ -9,7 +9,7 @@ import 'package:medical/core/widgets/custom_elevated_button.dart';
 import 'package:medical/features/cart/presentation/view/cart.dart';
 import 'package:medical/features/notification/presentation/view/notification.dart';
 import 'package:medical/core/dependency_injection/service_locator.dart';
-import 'package:medical/features/product_details/data/models/product_model.dart';
+import 'package:medical/core/models/product_model.dart';
 import 'package:medical/features/product_details/presentation/cubit/product_cubit.dart';
 import 'package:medical/features/product_details/presentation/cubit/product_state.dart';
 import 'package:medical/features/product_details/presentation/view/widget/container_package_size.dart';
@@ -127,7 +127,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<ProductCubit>()..fetchProductById(1),
+      create: (_) => sl<ProductDetailsCubit>()..fetchProductById(1),
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -165,13 +165,13 @@ class _ProductDetailsState extends State<ProductDetails> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
-            child: BlocBuilder<ProductCubit, ProductStates>(
+            child: BlocBuilder<ProductDetailsCubit, ProductStates>(
               builder: (context, state) {
                 if (state is ProductLoading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state is ProductError) {
                   return Center(child: Text(state.message));
-                } else if (state is ProductLoaded) {
+                } else if (state is ProductSucces) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

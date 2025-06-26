@@ -2,10 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical/features/product_details/data/repositry/product_repository.dart';
 import 'package:medical/features/product_details/presentation/cubit/product_state.dart';
 
-class ProductCubit extends Cubit<ProductStates> {
+class ProductDetailsCubit extends Cubit<ProductStates> {
   final ProductRepository repository;
 
-  ProductCubit(this.repository) : super(ProductInitial());
+  ProductDetailsCubit(this.repository) : super(ProductInitial());
 
   // Future<void> fetchProducts() async {
   //   emit(ProductLoading());
@@ -21,7 +21,7 @@ class ProductCubit extends Cubit<ProductStates> {
     final result = await repository.getProductById(id);
     result.fold(
       (failure) => emit(ProductError(message: failure)),
-      (product) => emit(ProductLoaded(product: product)),
+      (product) => emit(ProductSucces(product: product)),
     );
   }
 }

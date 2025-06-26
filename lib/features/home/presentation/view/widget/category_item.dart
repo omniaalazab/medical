@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class CategoryItem extends StatelessWidget {
   final String title;
@@ -11,12 +12,12 @@ class CategoryItem extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 60,
-          height: 60,
+          width: 20.w,
+          height: 7.h,
           decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
-        const SizedBox(height: 8),
-        Text(title, style: const TextStyle(fontSize: 14)),
+         SizedBox(height: 3.h),
+        Text(title, style:  TextStyle(fontSize: 14.sp)),
       ],
     );
   }
