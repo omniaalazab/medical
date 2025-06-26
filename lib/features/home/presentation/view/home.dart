@@ -1,12 +1,15 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:medical/core/api/api_service.dart';
 
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/colors.dart';
 import 'package:medical/features/cart/presentation/view/cart.dart';
 import 'package:medical/features/home/presentation/view/home_details.dart';
+import 'package:medical/features/notification/data/repository/notification_repository.dart';
+import 'package:medical/features/notification/presentation/view/notification_screen.dart';
 import 'package:medical/features/profile/presentation/views/profile_screen.dart';
-import 'package:medical/features/notification/presentation/view/notification.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   List<Map<String, dynamic>> screens = [
     {'screen': const HomeDetails()},
-    {'screen': const NotificationScreen()},
+    {'screen':  NotificationScreen(repository: NotificationRepository(ApiService(), dio: Dio()), onBackPressed: () {  },)},
     {'screen': const CartView()},
     {'screen': ProfileScreen()},
   ];
