@@ -1,9 +1,13 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:medical/core/api/api_service.dart';
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/colors.dart';
+import 'package:medical/features/cart/presentation/view/cart.dart';
 import 'package:medical/features/home/presentation/view/home_details.dart';
+import 'package:medical/features/login/presentation/view/profile_screen.dart';
+import 'package:medical/features/notification/data/repository/notification_repository.dart';
+import 'package:medical/features/notification/presentation/view/notification_screen.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,20 +19,36 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
+  final ApiService apiService = ApiService();
+
   List<String> imagePath = [
     AssetsData.home1,
     AssetsData.notifications1,
     AssetsData.shopping1,
     AssetsData.user,
   ];
-  List<Map<String, dynamic>> screens = [
-    {'screen': const HomeDetails()},
-    {'screen': const HomeDetails()},
-    {'screen': const HomeDetails()},
-    {'screen': HomeDetails()},
-  ];
+
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> screens = [
+      {'screen': const HomeDetails()},
+      {
+        'screen': NotificationScreen(
+          repository: NotificationRepository(
+            apiService,
+            dio: apiService.dio,
+          ),
+          onBackPressed: () {
+            setState(() {
+              selectedIndex = 0;
+            });
+          },
+        )
+      },
+      {'screen': const CartView()},
+      {'screen': ProfileScreen()},
+    ];
+
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
@@ -46,7 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
             color: isActive ? ColorsHelper.blue : ColorsHelper.lightpurple,
           );
         },
-
         activeIndex: selectedIndex,
         gapLocation: GapLocation.none,
         notchSmoothness: NotchSmoothness.verySmoothEdge,
@@ -61,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
           duration: const Duration(milliseconds: 500),
           child: screens[selectedIndex]['screen'],
         ),
-        // ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
