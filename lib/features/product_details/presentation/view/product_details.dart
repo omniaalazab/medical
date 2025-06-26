@@ -7,9 +7,9 @@ import 'package:medical/core/utils/colors.dart';
 import 'package:medical/core/utils/styles.dart';
 import 'package:medical/core/widgets/custom_elevated_button.dart';
 import 'package:medical/features/cart/presentation/view/cart.dart';
-import 'package:medical/features/notification/presentation/view/notification.dart';
 import 'package:medical/core/dependency_injection/service_locator.dart';
 import 'package:medical/core/models/product_model.dart';
+import 'package:medical/features/notification/presentation/view/notification_screen.dart';
 import 'package:medical/features/product_details/presentation/cubit/product_cubit.dart';
 import 'package:medical/features/product_details/presentation/cubit/product_state.dart';
 import 'package:medical/features/product_details/presentation/view/widget/container_package_size.dart';
@@ -142,7 +142,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => NotificationScreen()),
+                      MaterialPageRoute(builder: (_) => NotificationScreen(repository:sl.get() , onBackPressed: () {  },)),
                     );
                   },
                   child: SvgPicture.asset(AssetsData.notifications),

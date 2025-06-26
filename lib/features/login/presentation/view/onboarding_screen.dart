@@ -16,19 +16,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<Map<String, String>> _pages = [
     {
-      'image': 'assets/images/splash_image_1 (1).png',
+      'image': 'assets/images/splash_image_1.png',
       'title': 'View & buy Medicine online',
       'subtitle':
           'Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.'
     },
     {
-      'image': 'assets/images/splash_image_1 (1).png',
+      'image': 'assets/images/splash_image_1.png',
       'title': 'Fast delivery',
       'subtitle':
           'Get your medicine delivered to your door in minutes with real-time tracking.'
     },
     {
-      'image': 'assets/images/splash_image_1 (1).png',
+      'image': 'assets/images/splash_image_1.png',
       'title': 'Secure payments',
       'subtitle':
           'Pay safely with multiple methods and keep full control over your orders.'
@@ -93,12 +93,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
 
-                SizedBox(height: 15.h),
-            Image.asset(AssetsData.onboarding1, width: 256, height: 284),
+            //     SizedBox(height: 15.h),
+            // Image.asset(AssetsData.onboarding1, width: 256, height: 284),
 
-            SizedBox(height: 20),
+            // SizedBox(height: 20),
 
-            Image.asset(AssetsData.onboarding2, width: 255, height: 152),
+            // Image.asset(AssetsData.onboarding2, width: 255, height: 152),
 
             Spacer(),
             Padding(

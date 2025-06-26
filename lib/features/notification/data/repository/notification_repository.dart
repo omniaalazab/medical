@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:medical/core/api/api_service.dart';
+import 'package:medical/core/api/api_services.dart';
 import '../model/notification_model.dart';
 
 class NotificationRepository {

@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical/features/login/data/models/otp_response_model.dart';
 import 'package:medical/features/login/data/repository/auth_repository.dart';
 import 'auth_state.dart';
 

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:medical/core/api/endpoints.dart';
-import 'package:medical/core/api/product_api_services.dart';
+import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/errors/failure.dart';
 import 'package:medical/features/profile/data/model/user_profile/user_profile.dart';
 import 'package:medical/features/profile/data/repos/profile_repo.dart';

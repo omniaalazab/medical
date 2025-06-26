@@ -1,8 +1,12 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/api_constant.dart';
+import 'package:medical/features/login/data/repository/auth_repository.dart';
+import 'package:medical/features/login/presentation/cubit/auth_cubit.dart';
 
 import 'package:medical/features/login/presentation/view/splash_screen.dart';
 import 'package:medical/features/offline/presentaion/cubit/offline_cubit.dart';
@@ -41,10 +45,13 @@ class MyApp extends StatelessWidget {
       },
       child: Sizer(
         builder: (context, orientation, deviceType) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
+          return BlocProvider(
+            create: (context) => AuthCubit(AuthRepository(ApiService(dio: Dio()))),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
 
-            home: SplashScreen(),
+              home: SplashScreen(),
+            ),
           );
         },
       ),
