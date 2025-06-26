@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:medical/core/utils/styles.dart';
 import 'package:medical/features/checkout/presentation/view/widgets/edit_address_dailog.dart';
 import 'package:medical/features/checkout/presentation/view/widgets/radio_button_choose_address.dart';
 
-class AddressTile extends StatelessWidget {
-  final TextEditingController address;
-  final TextEditingController addressDetail;
-  final void Function(int?)? onAddressChanged;
-  final void Function(int?)? onChanged;
-  final BuildContext context;
+class AddressListTile extends StatelessWidget {
+  final String title;
+  final String addressLine1;
+  final String addressLine2;
   final int index;
   final int selectedValue;
-  const AddressTile({
+  final ValueChanged<int?> onChanged;
+  final VoidCallback onEditPressed;
+  final bool showRadioButton;
+  final Widget? leading;
+  const AddressListTile({
     super.key,
-    required this.address,
-    required this.onAddressChanged,
-    required this.context,
-    required this.addressDetail,
+    required this.title,
+    required this.addressLine1,
+    required this.addressLine2,
     required this.index,
     required this.selectedValue,
     required this.onChanged,
+    required this.onEditPressed,
+    this.showRadioButton = true,
+    this.leading,
   });
 
   @override
@@ -26,25 +31,33 @@ class AddressTile extends StatelessWidget {
     return Card(
       elevation: 0,
       child: ListTile(
-        leading: RadioButtonAddress(
-          index: index + 1,
-          selectedValue: selectedValue,
-          onChanged: onChanged,
-        ),
+        leading: showRadioButton
+            ? RadioButtonAddress(
+                index: index,
+                selectedValue: selectedValue,
+                onChanged: onChanged,
+              )
+            : leading,
         title: Text(
-          address.text.isEmpty ? 'No Address Yet' : address.text,
-          style: TextStyle(fontSize: 16),
+          title,
+          style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
-          addressDetail.text.isEmpty ? 'No Address Yet' : addressDetail.text,
-          style: TextStyle(fontSize: 16),
+          "$addressLine1\n$addressLine2",
+          style: Styles.textStyle13.copyWith(fontWeight: FontWeight.w400),
         ),
-        trailing: IconButton(
-          icon: Icon(Icons.edit, color: Colors.blue),
-          onPressed: () {
-            EditAddressDialog.showErrorDialogDefult(address, context);
-          },
-        ),
+        trailing: showRadioButton
+            ? IconButton(icon: const Icon(Icons.edit), onPressed: onEditPressed)
+            : RadioButtonAddress(
+                onChanged: onChanged,
+                selectedValue: selectedValue,
+                index: index,
+              ),
+        onTap: showRadioButton
+            ? () {
+                onChanged(index);
+              }
+            : null,
       ),
     );
   }

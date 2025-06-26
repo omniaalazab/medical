@@ -5,7 +5,7 @@ class CartItemModel {
   final String subtitle;
   final String imageUrl;
   final double price;
-  final double originalPrice;
+
   int quantity;
   CartItemModel({
     required this.id,
@@ -14,7 +14,18 @@ class CartItemModel {
     required this.subtitle,
     required this.imageUrl,
     required this.price,
-    required this.originalPrice,
+
     this.quantity = 1,
   });
+  CartItemModel copyWith({int? quantity}) {
+    return CartItemModel(
+      id: id,
+      title: title,
+      productId: productId,
+      subtitle: subtitle,
+      price: price,
+      imageUrl: imageUrl,
+      quantity: quantity ?? this.quantity,
+    );
+  }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:medical/core/utils/assets.dart';
 import 'package:medical/features/login/presentation/view/login.dart';
+import 'package:sizer/sizer.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -46,6 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
+<<<<<<< HEAD
             // 3️⃣ PageView نفسه
             Expanded(
               child: PageView.builder(
@@ -93,20 +96,31 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
 
             // 4️⃣ شريط الأزرار والمؤشّر
+=======
+            SizedBox(height: 15.h),
+            Image.asset(AssetsData.onboarding1, width: 256, height: 284),
+
+            SizedBox(height: 20),
+
+            Image.asset(AssetsData.onboarding2, width: 255, height: 152),
+
+            Spacer(),
+
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+<<<<<<< HEAD
                   // --- Skip
+=======
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
                   TextButton(
                     onPressed: _goToLogin,
                     child: Text(
                       'Skip',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[400],
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.grey[400]),
                     ),
                   ),
 
@@ -117,27 +131,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
 
+<<<<<<< HEAD
                   // --- Next
                   TextButton(
                     onPressed: _handleNext,
                     child: const Text(
+=======
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
+                    child: Text(
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
                       'Next',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.blue,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
                     ),
                   ),
                 ],
               ),
             ),
+<<<<<<< HEAD
             const SizedBox(height: 24),
+=======
+
+            SizedBox(height: 24),
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
           ],
         ),
       ),
     );
   }
 
+<<<<<<< HEAD
   // ---------------------------------
   // ⬇️ Functions
 
@@ -165,6 +193,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 4),
       width: isActive ? 12 : 10,
       height: isActive ? 12 : 10,
+=======
+  Widget _buildDot(bool isActive) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 4),
+      width: 10,
+      height: 10,
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
       decoration: BoxDecoration(
         color: isActive ? Colors.blue : Colors.grey[400],
         shape: BoxShape.circle,

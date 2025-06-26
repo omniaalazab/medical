@@ -3,6 +3,7 @@ import 'package:medical/core/constant_text.dart';
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/styles.dart';
 import 'package:medical/core/widgets/custom_elevated_button.dart';
+import 'package:medical/features/home/presentation/view/home.dart';
 import 'package:sizer/sizer.dart';
 
 class SucessPayment extends StatelessWidget {
@@ -35,7 +36,12 @@ class SucessPayment extends StatelessWidget {
               SizedBox(height: 25.h),
               CustomElevatedButton(
                 buttonText: ConstantText.continueOrder,
-                onPressedFunction: () {},
+                onPressedFunction: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => HomeScreen()),
+                  );
+                },
               ),
             ],
           ),

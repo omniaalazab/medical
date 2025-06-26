@@ -1,13 +1,21 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:medical/core/api/api_service.dart';
+=======
+
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/colors.dart';
 import 'package:medical/features/cart/presentation/view/cart.dart';
 import 'package:medical/features/home/presentation/view/home_details.dart';
 import 'package:medical/features/login/presentation/view/profile_screen.dart';
+<<<<<<< HEAD
 import 'package:medical/features/notification/data/repository/notification_repository.dart';
 import 'package:medical/features/notification/presentation/view/notification_screen.dart';
+=======
+import 'package:medical/features/notification/presentation/view/notification.dart';
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,7 +35,16 @@ class _HomeScreenState extends State<HomeScreen> {
     AssetsData.shopping1,
     AssetsData.user,
   ];
+<<<<<<< HEAD
 
+=======
+  List<Map<String, dynamic>> screens = [
+    {'screen': const HomeDetails()},
+    {'screen': const NotificationScreen()},
+    {'screen': const CartView()},
+    {'screen': ProfileScreen()},
+  ];
+>>>>>>> 5ef7d698ad381f02022bdf93ade92a805021ebce
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> screens = [

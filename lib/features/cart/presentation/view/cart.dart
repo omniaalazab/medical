@@ -4,7 +4,7 @@ import 'package:medical/core/utils/assets.dart';
 
 import 'package:medical/core/utils/styles.dart';
 import 'package:medical/core/widgets/custom_elevated_button.dart';
-import 'package:medical/features/cart/data/cart_model.dart';
+import 'package:medical/features/cart/data/models/cart_model.dart';
 
 import 'package:medical/features/cart/presentation/view/widgets/cart_item_container.dart';
 import 'package:medical/features/cart/presentation/view/widgets/payment_summery_row.dart';
@@ -24,7 +24,7 @@ class _CartViewState extends State<CartView> {
       id: "1",
       productId: "1",
       imageUrl: AssetsData.medicine,
-      originalPrice: 25,
+
       price: 25,
       title: "Sugar free gold",
       subtitle: "bottle of 500 pellets",
@@ -34,7 +34,7 @@ class _CartViewState extends State<CartView> {
       id: "1",
       productId: "1",
       imageUrl: AssetsData.medicine2,
-      originalPrice: 25,
+
       price: 25,
       title: "Sugar free gold",
       subtitle: "bottle of 500 pellets",
