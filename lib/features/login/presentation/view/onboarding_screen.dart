@@ -19,19 +19,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       'image': 'assets/images/splash_image_1.png',
       'title': 'View & buy Medicine online',
       'subtitle':
-          'Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.'
+          'Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.',
     },
     {
-      'image': 'assets/images/splash_image_1.png',
+      'image': AssetsData.onboarding1,
       'title': 'Fast delivery',
       'subtitle':
-          'Get your medicine delivered to your door in minutes with real-time tracking.'
+          'Get your medicine delivered to your door in minutes with real-time tracking.',
     },
     {
-      'image': 'assets/images/splash_image_1.png',
+      'image': AssetsData.onboarding1,
       'title': 'Secure payments',
       'subtitle':
-          'Pay safely with multiple methods and keep full control over your orders.'
+          'Pay safely with multiple methods and keep full control over your orders.',
     },
   ];
 
@@ -47,49 +47,50 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: _pages.length,
-                onPageChanged: (index) =>
-                    setState(() => _currentPage = index),
-                itemBuilder: (context, index) {
-                  final page = _pages[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          page['image']!,
-                          width: 256,
-                          height: 284,
-                        ),
-                        const SizedBox(height: 30),
-                        Text(
-                          page['title']!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xFF0B1F3F),
+            SizedBox(height: 10.h),
+            SizedBox(
+              height: 50.h,
+              child: Center(
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: _pages.length,
+                  onPageChanged: (index) =>
+                      setState(() => _currentPage = index),
+                  itemBuilder: (context, index) {
+                    final page = _pages[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(page['image']!, width: 256, height: 284),
+                          const SizedBox(height: 30),
+                          Text(
+                            page['title']!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF0B1F3F),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          page['subtitle']!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Color(0xFF8F9BB3),
-                            height: 1.4,
+                          const SizedBox(height: 16),
+                          Text(
+                            page['subtitle']!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Color(0xFF8F9BB3),
+                              height: 1.4,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
 
@@ -99,7 +100,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             // SizedBox(height: 20),
 
             // Image.asset(AssetsData.onboarding2, width: 255, height: 152),
-
             Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -122,19 +122,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   TextButton(
                     onPressed: _handleNext,
-                    child:
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    },
-                    child: Text(
-                      'Next',
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Next',
+                        style: TextStyle(fontSize: 16, color: Colors.blue),
+                      ),
                     ),
-                  ),),
+                  ),
                 ],
               ),
             ),
@@ -145,6 +147,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     );
   }
+
   void _handleNext() {
     if (_currentPage == _pages.length - 1) {
       _goToLogin();
@@ -174,15 +177,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         shape: BoxShape.circle,
       ),
     );
-  // Widget _buildDot(bool isActive) {
-  //   return Container(
-  //     margin: EdgeInsets.symmetric(horizontal: 4),
-  //     width: 10,
-  //     height: 10,
-  //     decoration: BoxDecoration(
-  //       color: isActive ? Colors.blue : Colors.grey[400],
-  //       shape: BoxShape.circle,
-  //     ),
-  //   );
+    // Widget _buildDot(bool isActive) {
+    //   return Container(
+    //     margin: EdgeInsets.symmetric(horizontal: 4),
+    //     width: 10,
+    //     height: 10,
+    //     decoration: BoxDecoration(
+    //       color: isActive ? Colors.blue : Colors.grey[400],
+    //       shape: BoxShape.circle,
+    //     ),
+    //   );
   }
 }
