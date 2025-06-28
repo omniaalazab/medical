@@ -6,7 +6,6 @@
 // class ApiService {
 //   final Dio _dio = Dio();
 
-  
 //   Dio get dio => _dio;
 
 //   Future<OtpResponse> sendPhoneNumber(String phone) async {
@@ -41,7 +40,7 @@
 //     final response = await dio.get('${Endpoints.baseUrl}$endPoint');
 //     if (response.statusCode == 200) {
 //     return response.data ;
-    
+
 //   }}
 
 //   Future<ProductModel> fetchSingleProduct(int id) async {
