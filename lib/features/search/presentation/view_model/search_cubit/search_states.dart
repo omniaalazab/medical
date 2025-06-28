@@ -1,4 +1,5 @@
 import 'package:medical/core/models/product_model.dart';
+
 class SearchStates {
   const SearchStates();
 }

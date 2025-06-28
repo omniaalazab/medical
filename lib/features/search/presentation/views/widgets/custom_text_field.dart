@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({super.key});
 
@@ -12,10 +13,7 @@ class CustomSearchTextField extends StatelessWidget {
         //     .fetchResultSearch(bookName: value);
       },
       decoration: InputDecoration(
-        suffixIcon: Icon(
-         Icons.search,
-          size: 18.sp,
-        ),
+        suffixIcon: Icon(Icons.search, size: 18.sp),
         disabledBorder: customOutlineBorder(),
         focusedBorder: customOutlineBorder(),
         enabledBorder: customOutlineBorder(),

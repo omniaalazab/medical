@@ -10,14 +10,14 @@ class SearchRepoImplement extends SearchRepo {
   final ApiService _apiService;
 
   SearchRepoImplement({required ApiService apiService})
-      : _apiService = apiService;
+    : _apiService = apiService;
 
   @override
-  Future<Either<Failure, List<ProductModel>>> fetchSearchResult(
-      {required String query}) async {
+  Future<Either<Failure, List<ProductModel>>> fetchSearchResult({
+    required String query,
+  }) async {
     try {
-      var data = await _apiService.get(
-          endPoint: Endpoints.search , );
+      var data = await _apiService.get(endPoint: Endpoints.search);
       List<ProductModel> searchBooks = [];
       for (var item in data['items']) {
         searchBooks.add(ProductModel.fromJson(item));

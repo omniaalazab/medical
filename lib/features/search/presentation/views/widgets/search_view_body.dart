@@ -4,7 +4,6 @@ import 'package:medical/core/utils/styles.dart';
 import 'package:medical/features/search/presentation/views/widgets/custom_text_field.dart';
 import 'package:medical/features/search/presentation/views/widgets/search_results_list_view.dart';
 
-
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 
@@ -20,21 +19,16 @@ class SearchViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   const CustomSearchTextField(),
-                  SizedBox(
-                    height: 40.h,
-                  ),
+                  SizedBox(height: 40.h),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Search Results",
-                      style: Styles.textStyle18,
-                    ),
+                    child: Text("Search Results", style: Styles.textStyle18),
                   ),
                 ],
               ),
             ),
           ),
-         const SliverFillRemaining(child:  SearchResultsListView()),
+          const SliverFillRemaining(child: SearchResultsListView()),
         ],
       ),
     );

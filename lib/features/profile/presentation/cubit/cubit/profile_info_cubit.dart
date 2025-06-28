@@ -4,7 +4,7 @@ import 'package:medical/features/profile/presentation/cubit/cubit/profile_info_s
 
 class ProfileInfoCubit extends Cubit<ProfileInfoState> {
   ProfileInfoCubit(this._profileRepo) : super(ProfileInfoInitial());
- final ProfileRepo _profileRepo ;
+  final ProfileRepo _profileRepo;
   Future<void> fetchProfileData() async {
     emit(ProfileInfoLoading());
     final result = await _profileRepo.fetchProfileData();
@@ -13,5 +13,4 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
       (userProfile) => emit(ProfileInfoSuccess(userProfile: userProfile)),
     );
   }
-
 }
