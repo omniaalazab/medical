@@ -20,7 +20,7 @@ class NotificationCubit extends Cubit<NotificationState> {
   void deleteNotification(String id) async {
     try {
       await repository.deleteNotification(id);
-      fetchNotifications(); 
+      fetchNotifications();
     } catch (e) {
       emit(NotificationError('Error while deleting'));
     }

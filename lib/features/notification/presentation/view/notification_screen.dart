@@ -62,10 +62,14 @@ class NotificationScreen extends StatelessWidget {
                         title: notification.message,
                         subtitle: notification.createdAt.toString(),
                         onTap: () {
-                          context.read<NotificationCubit>().markAsRead(notification.id);
+                          context.read<NotificationCubit>().markAsRead(
+                            notification.id,
+                          );
                         },
                         onDelete: () {
-                          context.read<NotificationCubit>().deleteNotification(notification.id);
+                          context.read<NotificationCubit>().deleteNotification(
+                            notification.id,
+                          );
                         },
                       ),
                     );
@@ -83,4 +87,3 @@ class NotificationScreen extends StatelessWidget {
     );
   }
 }
-

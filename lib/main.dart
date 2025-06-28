@@ -46,7 +46,8 @@ class MyApp extends StatelessWidget {
       child: Sizer(
         builder: (context, orientation, deviceType) {
           return BlocProvider(
-            create: (context) => AuthCubit(AuthRepository(ApiService(dio: Dio()))),
+            create: (context) =>
+                AuthCubit(AuthRepository(ApiService(dio: Dio()))),
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
 

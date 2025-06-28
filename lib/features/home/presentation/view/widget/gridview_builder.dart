@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medical/core/models/product_model.dart';
+
+import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/styles.dart';
 import 'package:medical/features/category_listing/presentation/view/category_listing.dart';
-import 'package:medical/core/models/product_model.dart';
+
 import 'package:sizer/sizer.dart';
 
 class GridViewBuilder extends StatelessWidget {
@@ -37,14 +40,17 @@ class GridViewBuilder extends StatelessWidget {
                 children: [
                   Center(
                     child: Image.asset(
-                      productList[index].imageUrl,
+                      productList[index].imageUrl ?? AssetsData.productImage1,
                       height: 15.h,
                       fit: BoxFit.fill,
                     ),
                   ),
-                  Text(productList[index].name, style: Styles.textStyle10),
                   Text(
-                    productList[index].description,
+                    productList[index].name ?? "",
+                    style: Styles.textStyle10,
+                  ),
+                  Text(
+                    productList[index].description ?? "",
                     style: Styles.textStyle10,
                   ),
                   Text(

@@ -1,37 +1,50 @@
+import 'package:medical/features/cart/data/api_services/cart_api_services.dart';
 import 'package:medical/features/cart/data/models/cart_model.dart';
 
 class CartRepository {
-  final List<CartItemModel> _cart = [];
+  final CartAPIServices apiService;
 
-  List<CartItemModel> getCartItems() {
-    return List.unmodifiable(_cart);
+  List<CartItemModel> _cartItems = [];
+  final double _total = 0;
+
+  CartRepository(this.apiService);
+
+  List<CartItemModel> getCartItems() => _cartItems;
+
+  double getTotalPrice() {
+    return _cartItems.fold(
+      0.0,
+      (sum, item) => sum + item.price * item.quantity,
+    );
   }
 
-  void addToCart(CartItemModel product) {
-    final index = _cart.indexWhere((item) => item.id == product.id);
-    if (index >= 0) {
-      _cart[index].quantity += 1;
-    } else {
-      _cart.add(product);
-    }
+  Future<void> addToCart(CartItemModel item) async {
+    final updatedCart = await apiService.addToCart(
+      productId: item.productId,
+      quantity: item.quantity,
+    );
+    _cartItems = updatedCart;
   }
 
-  void removeFromCart(int productId) {
-    _cart.removeWhere((item) => item.id == productId);
+  Future<void> fetchCart() async {
+    _cartItems = await apiService.getCart();
+  }
+
+  Future<void> removeItemCart(String cartId) async {
+    await apiService.removeItemCart(cartId);
+    _cartItems.removeWhere((item) => item.id == cartId);
   }
 
   void updateQuantity(int productId, int quantity) {
-    final index = _cart.indexWhere((item) => item.id == productId);
-    if (index >= 0) {
-      _cart[index] = _cart[index].copyWith(quantity: quantity);
+    final index = _cartItems.indexWhere(
+      (item) => int.parse(item.productId) == productId,
+    );
+    if (index != -1) {
+      _cartItems[index] = _cartItems[index].copyWith(quantity: quantity);
     }
   }
 
-  double getTotalPrice() {
-    return _cart.fold(0, (sum, item) => sum + item.price * item.quantity);
-  }
-
   void clearCart() {
-    _cart.clear();
+    _cartItems.clear();
   }
 }

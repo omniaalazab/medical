@@ -22,7 +22,7 @@ class RatingAnalyzingRow extends StatelessWidget {
         Text(ratingNo, style: Styles.textStyle14),
         Icon(Icons.star, color: ColorsHelper.amber, size: 20),
         SizedBox(
-          width: 40.w,
+          width: 30.w,
           child: LinearProgressIndicator(
             value: valueLinearProgressIndicator,
             backgroundColor: Colors.grey[300], // unfilled portion color

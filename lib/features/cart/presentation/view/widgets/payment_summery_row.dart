@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medical/core/utils/styles.dart';
 
 class PaymentSummaryRow extends StatelessWidget {
-   PaymentSummaryRow({
+  PaymentSummaryRow({
     super.key,
     required this.title,
     required this.value,
@@ -11,7 +11,7 @@ class PaymentSummaryRow extends StatelessWidget {
   });
   final String title;
   final String value;
-   TextStyle? textStyle = Styles.textStyle14;
+  TextStyle? textStyle = Styles.textStyle14;
   @override
   Widget build(BuildContext context) {
     return Padding(

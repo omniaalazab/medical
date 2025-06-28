@@ -28,7 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   List<Map<String, dynamic>> screens = [
     {'screen': const HomeDetails()},
-    {'screen':  NotificationScreen(repository: NotificationRepository(ApiService(dio: Dio()), dio: Dio()), onBackPressed: () {  },)},
+    {
+      'screen': NotificationScreen(
+        repository: NotificationRepository(ApiService(dio: Dio()), dio: Dio()),
+        onBackPressed: () {},
+      ),
+    },
     {'screen': const CartView()},
     {'screen': ProfileScreen()},
   ];

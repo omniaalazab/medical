@@ -1,7 +1,6 @@
 import 'package:medical/core/api/api_services.dart';
 import 'package:medical/features/login/data/models/otp_response_model.dart';
 
-
 class AuthRepository {
   final ApiService apiService;
 

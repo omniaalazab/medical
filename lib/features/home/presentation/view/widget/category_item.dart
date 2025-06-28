@@ -16,8 +16,8 @@ class CategoryItem extends StatelessWidget {
           height: 7.h,
           decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
-         SizedBox(height: 3.h),
-        Text(title, style:  TextStyle(fontSize: 14.sp)),
+        SizedBox(height: 3.h),
+        Text(title, style: TextStyle(fontSize: 14.sp)),
       ],
     );
   }

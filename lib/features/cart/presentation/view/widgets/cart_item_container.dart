@@ -9,18 +9,20 @@ class CartItemContainer extends StatelessWidget {
     super.key,
     required this.imageName,
     required this.title,
-    required this.subTitle,
+    // required this.subTitle,
     required this.price,
     this.onTapAdd,
     this.onTapRemove,
     required this.portion,
+    required this.removeItemCart,
   });
   final String imageName;
   final String title;
-  final String subTitle;
+  // final String subTitle;
   final String price;
   final void Function()? onTapAdd;
   final void Function()? onTapRemove;
+  final void Function()? removeItemCart;
   final int portion;
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,10 @@ class CartItemContainer extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(imageName, fit: BoxFit.cover),
+              child: Image.asset(
+                imageName,
+                fit: BoxFit.cover,
+              ), //make it network
             ),
           ),
 
@@ -83,10 +88,13 @@ class CartItemContainer extends StatelessWidget {
                           color: Colors.grey.shade100,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
-                          Icons.close,
-                          size: 16,
-                          color: Colors.grey.shade600,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.close,
+                            size: 16,
+                            color: Colors.grey.shade600,
+                          ),
+                          onPressed: removeItemCart,
                         ),
                       ),
                     ),
@@ -95,14 +103,13 @@ class CartItemContainer extends StatelessWidget {
 
                 SizedBox(height: 0.5.h),
 
-                Text(
-                  subTitle,
-                  style: Styles.textStyle13.copyWith(
-                    color: Colors.grey.shade600,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-
+                // Text(
+                //   subTitle,
+                //   style: Styles.textStyle13.copyWith(
+                //     color: Colors.grey.shade600,
+                //     fontWeight: FontWeight.w400,
+                //   ),
+                // ),
                 SizedBox(height: 2.h),
 
                 Row(

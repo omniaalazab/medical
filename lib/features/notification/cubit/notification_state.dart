@@ -1,6 +1,5 @@
 import 'package:medical/features/notification/data/model/notification_model.dart';
 
-
 abstract class NotificationState {}
 
 class NotificationInitial extends NotificationState {}

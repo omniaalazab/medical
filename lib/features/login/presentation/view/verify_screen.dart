@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical/features/login/presentation/cubit/auth_cubit.dart';
 import 'package:medical/features/login/presentation/cubit/auth_state.dart';
 
-
 class VerifyScreen extends StatefulWidget {
   final String phoneNumber;
 
@@ -15,8 +14,10 @@ class VerifyScreen extends StatefulWidget {
 }
 
 class _VerifyScreenState extends State<VerifyScreen> {
-  List<TextEditingController> controllers =
-      List.generate(6, (_) => TextEditingController());
+  List<TextEditingController> controllers = List.generate(
+    6,
+    (_) => TextEditingController(),
+  );
   int secondsRemaining = 59;
   Timer? _timer;
 
@@ -97,10 +98,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
               const SizedBox(height: 8),
               Text(
                 "We just sent you a verification code via phone\n${widget.phoneNumber}",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[700],
-                ),
+                style: TextStyle(fontSize: 14, color: Colors.grey[700]),
               ),
               const SizedBox(height: 32),
               Row(
@@ -109,7 +107,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
               ),
               const SizedBox(height: 32),
 
-              
               Center(
                 child: BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
@@ -117,11 +114,10 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Verified successfully')),
                       );
-        
                     } else if (state is AuthError) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(state.message)),
-                      );
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(state.message)));
                     }
                   },
                   builder: (context, state) {
@@ -129,16 +125,20 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       onPressed: state is AuthLoading
                           ? null
                           : () {
-                              String otp =
-                                  controllers.map((e) => e.text).join();
-                              context
-                                  .read<AuthCubit>()
-                                  .verifyOtp(widget.phoneNumber, otp);
+                              String otp = controllers
+                                  .map((e) => e.text)
+                                  .join();
+                              context.read<AuthCubit>().verifyOtp(
+                                widget.phoneNumber,
+                                otp,
+                              );
                             },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF4157FF),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 40, vertical: 14),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 40,
+                          vertical: 14,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -166,12 +166,13 @@ class _VerifyScreenState extends State<VerifyScreen> {
               ),
               const SizedBox(height: 8),
 
-            
               Center(
                 child: TextButton(
                   onPressed: secondsRemaining == 0
                       ? () {
-                        context.read<AuthCubit>().sendPhone(widget.phoneNumber);
+                          context.read<AuthCubit>().sendPhone(
+                            widget.phoneNumber,
+                          );
 
                           setState(() {
                             secondsRemaining = 59;
@@ -189,7 +190,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -197,4 +198,3 @@ class _VerifyScreenState extends State<VerifyScreen> {
     );
   }
 }
-

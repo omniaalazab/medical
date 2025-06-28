@@ -1,4 +1,4 @@
-import 'package:medical/core/models/product_model.dart';
+import 'package:medical/core/models/product_model/product_model.dart';
 
 class ProductStates {}
 
@@ -7,7 +7,7 @@ class ProductInitial extends ProductStates {}
 class ProductLoading extends ProductStates {}
 
 class ProductSucces extends ProductStates {
-  final ProductModel product;
+  final ProductUnifiedModel product;
   ProductSucces({required this.product});
 }
 

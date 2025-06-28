@@ -3,11 +3,7 @@ class OtpResponse {
   final String message;
   final OtpData? data;
 
-  OtpResponse({
-    required this.status,
-    required this.message,
-    this.data,
-  });
+  OtpResponse({required this.status, required this.message, this.data});
 
   factory OtpResponse.fromJson(Map<String, dynamic> json) {
     return OtpResponse(
@@ -17,7 +13,6 @@ class OtpResponse {
     );
   }
 }
-
 
 class OtpData {
   final String phone;
