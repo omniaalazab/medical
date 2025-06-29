@@ -1,65 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:medical/core/constant_text.dart';
+
+import 'package:medical/features/checkout/data/models/address_model.dart';
 
 class EditAddressDialog {
-  static Future showEditAddressDialog(
+  static void showEditAddressDialog(
     BuildContext context, {
-    String initialTitle = '',
-    String initialAddress1 = '',
-    String initialAddress2 = '',
+    AddressModel? existingAddress,
     required Function(String, String, String) onSave,
   }) {
-    final titleController = TextEditingController(text: initialTitle);
-    final address1Controller = TextEditingController(text: initialAddress1);
-    final address2Controller = TextEditingController(text: initialAddress2);
+    final titleController = TextEditingController(
+      text: existingAddress?.title ?? '',
+    );
+    final address1Controller = TextEditingController(
+      text: existingAddress?.addressLine1 ?? '',
+    );
+    final address2Controller = TextEditingController(
+      text: existingAddress?.addressLine2 ?? '',
+    );
 
-    return showDialog(
+    showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text(ConstantText.editAdress),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  controller: titleController,
-                  decoration: const InputDecoration(
-                    labelText: 'Address Title (e.g., Home, Office)',
-                  ),
-                ),
-                TextField(
-                  controller: address1Controller,
-                  decoration: const InputDecoration(
-                    labelText: 'Address Line 1',
-                  ),
-                ),
-                TextField(
-                  controller: address2Controller,
-                  decoration: const InputDecoration(
-                    labelText: 'Address Line 2',
-                  ),
-                ),
-              ],
-            ),
+          title: Text(existingAddress == null ? 'Add Address' : 'Edit Address'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: titleController,
+                decoration: InputDecoration(labelText: 'Title'),
+              ),
+              TextField(
+                controller: address1Controller,
+                decoration: InputDecoration(labelText: 'Address Line 1'),
+              ),
+              TextField(
+                controller: address2Controller,
+                decoration: InputDecoration(labelText: 'Address Line 2'),
+              ),
+            ],
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel'),
+              child: Text('Cancel'),
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: () {
-                final title = titleController.text.trim();
-                final address1 = address1Controller.text.trim();
-                final address2 = address2Controller.text.trim();
-
-                if (title.isNotEmpty && address1.isNotEmpty) {
-                  onSave(title, address1, address2);
-                  Navigator.pop(context);
-                }
+                onSave(
+                  titleController.text,
+                  address1Controller.text,
+                  address2Controller.text,
+                );
+                Navigator.pop(context);
               },
-              child: const Text('Save'),
+              child: Text('Save'),
             ),
           ],
         );
