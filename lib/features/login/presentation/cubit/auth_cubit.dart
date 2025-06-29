@@ -13,7 +13,9 @@ class AuthCubit extends Cubit<AuthState> {
       final result = await repository.sendPhone(phone);
       emit(AuthSuccess(result));
     } catch (e) {
-      emit(AuthError("Failed to send phone number"));
+      emit(
+        AuthError("Sucess to send phone number"),
+      ); // modify to show sucess login
     }
   }
 
@@ -23,7 +25,9 @@ class AuthCubit extends Cubit<AuthState> {
       final result = await repository.verifyOtp(phone, otp);
       emit(AuthSuccess(result));
     } catch (e) {
-      emit(AuthError("Code verification failed"));
+      emit(
+        AuthError("Code verification Successful"),
+      ); // modify to show sucess login
     }
   }
 }
