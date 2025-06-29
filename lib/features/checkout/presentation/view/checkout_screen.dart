@@ -54,175 +54,173 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
           child: Column(
             children: [
-              BlocBuilder<AddressCubit, AddressState>(
-                builder: (context, state) {
-                  if (state is AddressLoading) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (state is AddressError) {
-                    return Center(child: Text(state.message));
-                  } else if (state is AddressLoaded) {
-                    selectedAddressIndex = state.addresses.length;
+              Expanded(
+                child: BlocBuilder<AddressCubit, AddressState>(
+                  builder: (context, state) {
+                    if (state is AddressLoading) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (state is AddressError) {
+                      return Center(child: Text(state.message));
+                    } else if (state is AddressLoaded) {
+                      selectedAddressIndex = state.addresses.length;
 
-                    return ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 40.h),
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        children: [
-                          // cart info
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "${widget.cartItemModel.length} Items in your cart",
-                                style: Styles.textStyle14,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    ConstantText.total,
-                                    style: Styles.textStyle13,
-                                  ),
-                                  Text(
-                                    'RS.${widget.total}',
-                                    style: Styles.textStyle16,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 2.h),
-                          Text(
-                            ConstantText.deliveryAddress,
-                            style: Styles.textStyle16,
-                          ),
-                          SizedBox(height: 1.h),
+                      return SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // cart info
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "${widget.cartItemModel.length} Items in your cart",
+                                  style: Styles.textStyle14,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      ConstantText.total,
+                                      style: Styles.textStyle13,
+                                    ),
+                                    Text(
+                                      'RS.${widget.total}',
+                                      style: Styles.textStyle16,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 2.h),
+                            Text(
+                              ConstantText.deliveryAddress,
+                              style: Styles.textStyle16,
+                            ),
+                            SizedBox(height: 1.h),
 
-                          ...state.addresses.asMap().entries.map((entry) {
-                            final index = entry.key;
-                            final address = entry.value;
-                            debugPrint(
-                              'Address ID: ${address.id}, Type: ${address.id.runtimeType}',
-                            );
-                            debugPrint(
-                              'Index: $index, Type: ${index.runtimeType}',
-                            );
+                            ...state.addresses.asMap().entries.map((entry) {
+                              final index = entry.key;
+                              final address = entry.value;
+                              debugPrint(
+                                'Address ID: ${address.id}, Type: ${address.id.runtimeType}',
+                              );
+                              debugPrint(
+                                'Index: $index, Type: ${index.runtimeType}',
+                              );
 
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: AddressListTile(
-                                title: address.title,
-                                addressLine1: address.addressLine1,
-                                addressLine2: address.addressLine2,
-                                index: index,
-                                selectedValue: selectedValue,
-                                onChanged: (value) {
-                                  setState(() {
-                                    // Safe type handling
-                                    if (value != null) {
-                                      selectedValue = value;
-                                    }
-                                  });
-                                },
-                                onEditPressed: () {
-                                  EditAddressDialog.showEditAddressDialog(
-                                    context,
-                                    onSave: (title, address1, address2) {
-                                      // Ensure isDefault is explicitly set to false
-                                      final newAddress = AddressModel(
-                                        isDefault:
-                                            false, // Explicitly set to false
-                                        id: DateTime.now()
-                                            .millisecondsSinceEpoch,
-                                        title: title,
-                                        addressLine1: address1,
-                                        addressLine2: address2,
-                                      );
-
-                                      debugPrint(
-                                        'Creating new address: ${newAddress.toCreateJson()}',
-                                      );
-                                      context.read<AddressCubit>().addAddress(
-                                        newAddress,
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            );
-                          }),
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              const Icon(Icons.add),
-                              TextButton(
-                                onPressed: () {
-                                  EditAddressDialog.showEditAddressDialog(
-                                    context,
-                                    onSave: (title, address1, address2) {
-                                      context.read<AddressCubit>().addAddress(
-                                        AddressModel(
-                                          isDefault: false,
-                                          id: DateTime.now()
-                                              .millisecondsSinceEpoch, // Generate unique ID
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: AddressListTile(
+                                  title: address.title,
+                                  addressLine1: address.addressLine1,
+                                  addressLine2: address.addressLine2,
+                                  index: index,
+                                  selectedValue: selectedValue,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      if (value != null) {
+                                        selectedValue = value;
+                                      }
+                                    });
+                                  },
+                                  onEditPressed: () {
+                                    EditAddressDialog.showEditAddressDialog(
+                                      context,
+                                      existingAddress: address,
+                                      onSave: (title, address1, address2) {
+                                        final updatedAddress = address.copyWith(
                                           title: title,
                                           addressLine1: address1,
                                           addressLine2: address2,
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                                child: Text(
-                                  ConstantText.addAddress,
-                                  style: Styles.textStyle14,
+                                        );
+                                        context
+                                            .read<AddressCubit>()
+                                            .updateAddress(
+                                              address.id,
+                                              updatedAddress,
+                                            );
+                                      },
+                                    );
+                                  },
                                 ),
+                              );
+                            }),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                const Icon(Icons.add),
+                                TextButton(
+                                  onPressed: () {
+                                    EditAddressDialog.showEditAddressDialog(
+                                      context,
+                                      onSave: (title, address1, address2) {
+                                        context.read<AddressCubit>().addAddress(
+                                          AddressModel(
+                                            isDefault: false,
+                                            id: DateTime.now()
+                                                .millisecondsSinceEpoch,
+                                            title: title,
+                                            addressLine1: address1,
+                                            addressLine2: address2,
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                  child: Text(
+                                    ConstantText.addAddress,
+                                    style: Styles.textStyle14,
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            SizedBox(height: 4.h),
+                            Text(
+                              ConstantText.paymentMethod,
+                              style: Styles.textStyle16,
+                            ),
+                            SizedBox(height: 1.h),
+
+                            // Payment method tile
+                            AddressListTile(
+                              title: ConstantText.cashOnDelivery,
+                              addressLine1: '',
+                              addressLine2: '',
+                              index: selectedAddressIndex,
+                              selectedValue: selectedValue,
+                              onChanged: (value) {
+                                setState(() {
+                                  if (value != null) {
+                                    selectedValue = value;
+                                  }
+                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => SucessPayment(),
+                                  ),
+                                );
+                              },
+                              onEditPressed: () {},
+                              showRadioButton: false,
+                              leading: Image.asset(
+                                AssetsData.payment,
+                                height: 4.h,
+                                width: 4.h,
                               ),
-                            ],
-                          ),
-
-                          SizedBox(height: 2.h),
-                          Text(
-                            ConstantText.paymentMethod,
-                            style: Styles.textStyle16,
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-
-                  return Center(child: Text('No addresses found'));
-                },
-              ),
-              SizedBox(height: 2.h),
-
-              AddressListTile(
-                title: ConstantText.cashOnDelivery,
-                addressLine1: '',
-                addressLine2: '',
-                index: selectedAddressIndex,
-                selectedValue: selectedValue,
-                onChanged: (value) {
-                  setState(() {
-                    if (value != null) {
-                      selectedValue = value;
+                            ),
+                          ],
+                        ),
+                      );
                     }
-                  });
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => SucessPayment()),
-                  );
-                },
-                onEditPressed: () {},
-                showRadioButton: false,
-                leading: Image.asset(
-                  AssetsData.payment,
-                  height: 4.h,
-                  width: 4.h,
+
+                    return Center(child: Text('No addresses found'));
+                  },
                 ),
               ),
-              const Spacer(),
+              SizedBox(height: 2.h),
               BlocConsumer<PaymentCubit, PaymentState>(
                 listener: (context, state) {
                   if (state is PaymentSucess) {
