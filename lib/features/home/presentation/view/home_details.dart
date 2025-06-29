@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medical/core/constant_text.dart';
-import 'package:medical/core/models/product_model/product_model.dart';
+
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/colors.dart';
 import 'package:medical/core/utils/styles.dart';

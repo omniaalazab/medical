@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medical/core/utils/colors.dart';
 import 'package:medical/core/utils/styles.dart';
-import 'package:sizer/sizer.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({

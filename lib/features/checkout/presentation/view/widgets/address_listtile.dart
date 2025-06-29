@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medical/core/utils/styles.dart';
-import 'package:medical/features/checkout/presentation/view/widgets/edit_address_dailog.dart';
+
 import 'package:medical/features/checkout/presentation/view/widgets/radio_button_choose_address.dart';
 
 class AddressListTile extends StatelessWidget {

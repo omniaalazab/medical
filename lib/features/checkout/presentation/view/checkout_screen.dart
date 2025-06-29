@@ -101,10 +101,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ...state.addresses.asMap().entries.map((entry) {
                             final index = entry.key;
                             final address = entry.value;
-                            print(
+                            debugPrint(
                               'Address ID: ${address.id}, Type: ${address.id.runtimeType}',
                             );
-                            print('Index: $index, Type: ${index.runtimeType}');
+                            debugPrint(
+                              'Index: $index, Type: ${index.runtimeType}',
+                            );
 
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 10),
@@ -125,24 +127,25 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 onEditPressed: () {
                                   EditAddressDialog.showEditAddressDialog(
                                     context,
-                                    initialTitle: address.title,
-                                    initialAddress1: address.addressLine1,
-                                    initialAddress2: address.addressLine2,
-                                    onSave:
-                                        (newTitle, newAddress1, newAddress2) {
-                                          final updatedAddress = address
-                                              .copyWith(
-                                                title: newTitle,
-                                                addressLine1: newAddress1,
-                                                addressLine2: newAddress2,
-                                              );
-                                          context
-                                              .read<AddressCubit>()
-                                              .updateAddress(
-                                                address.id,
-                                                updatedAddress,
-                                              );
-                                        },
+                                    onSave: (title, address1, address2) {
+                                      // Ensure isDefault is explicitly set to false
+                                      final newAddress = AddressModel(
+                                        isDefault:
+                                            false, // Explicitly set to false
+                                        id: DateTime.now()
+                                            .millisecondsSinceEpoch,
+                                        title: title,
+                                        addressLine1: address1,
+                                        addressLine2: address2,
+                                      );
+
+                                      debugPrint(
+                                        'Creating new address: ${newAddress.toCreateJson()}',
+                                      );
+                                      context.read<AddressCubit>().addAddress(
+                                        newAddress,
+                                      );
+                                    },
                                   );
                                 },
                               ),

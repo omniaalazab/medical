@@ -5,7 +5,6 @@ class CartRepository {
   final CartAPIServices apiService;
 
   List<CartItemModel> _cartItems = [];
-  final double _total = 0;
 
   CartRepository(this.apiService);
 

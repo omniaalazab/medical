@@ -1,6 +1,6 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:medical/core/api/endpoints.dart';
 import '../models/address_model.dart';
 
@@ -15,7 +15,7 @@ class AddressServiceApi {
     try {
       final response = await dio.get(baseUrl);
       log('API Response Status Code: ${response.statusCode}');
-      print('API Response Data: ${response.data}');
+      debugPrint('API Response Data: ${response.data}');
 
       if (response.statusCode == 200) {
         // Handle both cases: data wrapped in 'data' key or direct array
@@ -29,18 +29,18 @@ class AddressServiceApi {
           throw Exception('Unexpected API response format');
         }
 
-        print('Parsed data length: ${data.length}');
+        debugPrint('Parsed data length: ${data.length}');
 
         List<AddressModel> addresses = [];
         for (var item in data) {
           try {
-            print('Processing item: $item');
+            debugPrint('Processing item: $item');
             final address = AddressModel.fromJson(item as Map<String, dynamic>);
-            print('Created address: $address');
+            debugPrint('Created address: $address');
             addresses.add(address);
           } catch (e) {
-            print('Error parsing address item: $e');
-            print('Problematic item: $item');
+            debugPrint('Error parsing address item: $e');
+            debugPrint('Problematic item: $item');
             rethrow;
           }
         }
@@ -50,34 +50,31 @@ class AddressServiceApi {
         throw Exception('Failed to load addresses: ${response.statusCode}');
       }
     } on DioException catch (e) {
-      print('DioException: ${e.message}');
-      print('DioException response: ${e.response?.data}');
+      debugPrint('DioException: ${e.message}');
+      debugPrint('DioException response: ${e.response?.data}');
       throw Exception('Failed to load addresses: ${e.message}');
     } catch (e) {
-      print('General Exception: $e');
+      debugPrint('General Exception: $e');
       rethrow;
     }
   }
 
   Future<void> addAddress(AddressModel address) async {
     try {
-      final response = await dio.post(
-        baseUrl, // Your API endpoint
-        data: {
-          'title': address.title,
-          'address_line1': address.addressLine1, // Note: snake_case
-          'address_line2': address.addressLine2, // Note: snake_case
-          'is_default': address.isDefault ? 1 : 0,
-        },
-      );
+      // Use the toCreateJson method to ensure proper formatting
+      final requestData = address.toCreateJson();
+      debugPrint('Adding address with data: $requestData');
+
+      final response = await dio.post(baseUrl, data: requestData);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        print('Address added successfully');
+        debugPrint('Address added successfully');
+        debugPrint('Response: ${response.data}');
       }
     } catch (e) {
-      print('Error adding address: $e');
+      debugPrint('Error adding address: $e');
       if (e is DioException && e.response != null) {
-        print('Error response: ${e.response!.data}');
+        debugPrint('Error response: ${e.response!.data}');
       }
       rethrow;
     }
@@ -85,27 +82,30 @@ class AddressServiceApi {
 
   Future<void> updateAddress(int id, AddressModel address) async {
     try {
-      print('Updating address $id: ${address.toCreateJson()}');
-      final response = await dio.put(
-        '$baseUrl/$id',
-        data: address.toCreateJson(),
-      );
-      print('Update address response: ${response.data}');
+      // Use the new toUpdateJson method to ensure all fields are properly set
+      final body = address.toUpdateJson();
+      debugPrint('Updating address $id with data: $body');
+
+      final response = await dio.put('$baseUrl/$id', data: body);
+      debugPrint('Update address response: ${response.data}');
     } on DioException catch (e) {
-      print('Error updating address: ${e.message}');
-      print('Error response: ${e.response?.data}');
+      if (e.response != null) {
+        debugPrint('Response status: ${e.response?.statusCode}');
+        debugPrint('Error body: ${e.response?.data}');
+      }
+      debugPrint('Error updating address: ${e.message}');
       rethrow;
     }
   }
 
   Future<void> deleteAddress(int id) async {
     try {
-      print('Deleting address $id');
+      debugPrint('Deleting address $id');
       final response = await dio.delete('$baseUrl/$id');
-      print('Delete address response: ${response.data}');
+      debugPrint('Delete address response: ${response.data}');
     } on DioException catch (e) {
-      print('Error deleting address: ${e.message}');
-      print('Error response: ${e.response?.data}');
+      debugPrint('Error deleting address: ${e.message}');
+      debugPrint('Error response: ${e.response?.data}');
       rethrow;
     }
   }

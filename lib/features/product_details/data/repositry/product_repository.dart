@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:medical/core/api/endpoints.dart';
 import 'package:medical/core/api/api_services.dart';
-import 'package:medical/core/models/product_model.dart';
+
 import 'package:medical/core/models/product_model/product_model.dart';
 
 class ProductRepository {
@@ -23,7 +24,7 @@ class ProductRepository {
       final product = await apiService.fetchSingleProduct(id);
       return right(product);
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       return left('Error: ${e.toString()}');
     }
   }

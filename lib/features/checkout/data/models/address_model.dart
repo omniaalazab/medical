@@ -52,12 +52,23 @@ class AddressModel {
     );
   }
 
+  // Fixed method - ensure is_default is never null
   Map<String, dynamic> toCreateJson() {
     return {
       'title': title,
       'address_line1': addressLine1,
       'address_line2': addressLine2,
-      'is_default': isDefault,
+      'is_default': isDefault ? 1 : 0, // This should never be null
+    };
+  }
+
+  // Add this method specifically for updates to ensure all fields are present
+  Map<String, dynamic> toUpdateJson() {
+    return {
+      'title': title,
+      'address_line1': addressLine1,
+      'address_line2': addressLine2,
+      'is_default': isDefault ? 1 : 0,
     };
   }
 }

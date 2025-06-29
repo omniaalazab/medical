@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:medical/core/api/endpoints.dart';
 
 import 'package:medical/core/models/product_model/product_model.dart';
@@ -50,11 +51,11 @@ class ApiService {
 
   Future<ProductUnifiedModel> fetchSingleProduct(int id) async {
     try {
-      print('Fetching product with ID: $id');
+      debugPrint('Fetching product with ID: $id');
       final response = await dio.get('${Endpoints.baseUrl}/products/$id');
 
-      print('Response status: ${response.statusCode}');
-      print('Full Response data: ${response.data}');
+      debugPrint('Response status: ${response.statusCode}');
+      debugPrint('Full Response data: ${response.data}');
 
       if (response.statusCode == 200) {
         // Check the actual structure of your API response
@@ -77,11 +78,11 @@ class ApiService {
         throw Exception('Failed to load product details: $error');
       }
     } catch (e) {
-      print('Error fetching product: $e');
+      debugPrint('Error fetching product: $e');
       if (e is DioException) {
         if (e.response != null) {
-          print('Error response status: ${e.response?.statusCode}');
-          print('Error response data: ${e.response?.data}');
+          debugPrint('Error response status: ${e.response?.statusCode}');
+          debugPrint('Error response data: ${e.response?.data}');
           throw Exception(
             'Server error: ${e.response?.statusCode} - ${e.response?.data}',
           );

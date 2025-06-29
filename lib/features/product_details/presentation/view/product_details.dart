@@ -10,14 +10,13 @@ import 'package:medical/features/cart/data/models/cart_model.dart';
 import 'package:medical/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:medical/features/cart/presentation/view/cart.dart';
 import 'package:medical/core/dependency_injection/service_locator.dart';
-import 'package:medical/core/models/product_model.dart';
+
 import 'package:medical/features/notification/presentation/view/notification_screen.dart';
 import 'package:medical/features/product_details/presentation/cubit/product_cubit.dart';
 import 'package:medical/features/product_details/presentation/cubit/product_state.dart';
 import 'package:medical/features/product_details/presentation/view/widget/container_package_size.dart';
 import 'package:medical/features/product_details/presentation/view/widget/rating_analyzing_row.dart';
 import 'package:sizer/sizer.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key, required this.productId});
@@ -27,11 +26,6 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   context.read<ProductDetailsCubit>().fetchProductById(1);
-  // }
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
