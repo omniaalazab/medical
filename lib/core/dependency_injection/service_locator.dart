@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:medical/core/api/api_service.dart';
+
 import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/api/dio_with_auth.dart';
 import 'package:medical/core/api_constant.dart';
