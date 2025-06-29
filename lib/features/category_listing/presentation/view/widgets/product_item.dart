@@ -12,22 +12,20 @@ class ProductItem extends StatelessWidget {
     required this.price,
     required this.rating,
     required this.badge,
+    required this.productId,
+    required this.onTap,
   });
   final String badge;
   final String imageUrl;
   final String title;
   final String price;
   final String rating;
+  final int productId;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        // Navigate to product details page
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ProductDetails(productId: 1)),
-        );
-      },
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -45,7 +43,7 @@ class ProductItem extends StatelessWidget {
                     topLeft: Radius.circular(8),
                     topRight: Radius.circular(8),
                   ),
-                  child: Image.asset(
+                  child: Image.network(
                     imageUrl,
                     height: 130,
                     width: double.infinity,
@@ -55,12 +53,9 @@ class ProductItem extends StatelessWidget {
                 Positioned(
                   top: 8,
                   left: 8,
-                  child: SaleRedTriangle(
-                    color: badge == "SALE"
-                        ? Colors.red
-                        : Colors.yellow.shade700,
-                    text: badge,
-                  ),
+                  child: badge == "SALE"
+                      ? SaleRedTriangle(color: Colors.red, text: badge)
+                      : SizedBox(),
                 ),
               ],
             ),
@@ -89,8 +84,8 @@ class ProductItem extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.amber,
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(4),
-                            bottomLeft: Radius.circular(4),
+                            topLeft: Radius.circular(8),
+                            bottomLeft: Radius.circular(8),
                           ),
                         ),
                         child: Row(

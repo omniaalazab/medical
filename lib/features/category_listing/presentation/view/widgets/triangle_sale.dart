@@ -20,7 +20,7 @@ class SaleRedTriangle extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.w),
             child: Text(
               text,
-              style: Styles.textStyle10.copyWith(
+              style: Styles.textStyle14.copyWith(
                 color: Colors.white,
 
                 fontWeight: FontWeight.bold,
