@@ -56,9 +56,9 @@ class AddressModel {
   Map<String, dynamic> toCreateJson() {
     return {
       'title': title,
-      'address_line1': addressLine1,
-      'address_line2': addressLine2,
-      'is_default': isDefault ? 1 : 0, // This should never be null
+      'addressLine1': addressLine1, // camelCase for requests
+      'addressLine2': addressLine2, // camelCase for requests
+      'is_default': isDefault ? 1 : 0,
     };
   }
 
@@ -66,8 +66,8 @@ class AddressModel {
   Map<String, dynamic> toUpdateJson() {
     return {
       'title': title,
-      'address_line1': addressLine1,
-      'address_line2': addressLine2,
+      'addressLine1': addressLine1, // camelCase for requests
+      'addressLine2': addressLine2, // camelCase for requests
       'is_default': isDefault ? 1 : 0,
     };
   }
