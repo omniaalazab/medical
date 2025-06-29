@@ -13,7 +13,7 @@ class NotificationLoaded extends NotificationState {
 }
 
 class NotificationError extends NotificationState {
-  final String message;
+  final dynamic notification;
 
-  NotificationError(this.message);
+  NotificationError(this.notification);
 }
