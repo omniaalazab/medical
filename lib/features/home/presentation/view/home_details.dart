@@ -1,9 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/constant_text.dart';
 import 'package:medical/core/dependency_injection/service_locator.dart';
 
