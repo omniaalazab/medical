@@ -1,13 +1,16 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/constant_text.dart';
-
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/colors.dart';
 import 'package:medical/core/utils/styles.dart';
+import 'package:medical/features/home/data/cubit/cubit/product_cubit.dart';
+import 'package:medical/features/home/data/repos/product_repo_implement.dart';
 import 'package:medical/features/home/presentation/view/widget/category_item.dart';
 import 'package:medical/features/home/presentation/view/widget/gridview_builder.dart';
-import 'package:medical/core/models/product_model.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeDetails extends StatefulWidget {
@@ -18,195 +21,6 @@ class HomeDetails extends StatefulWidget {
 }
 
 class _HomeDetailsState extends State<HomeDetails> {
-  final List<ProductModel> productList = [
-    ProductModel(
-      id: 1,
-      description: "",
-      name: "",
-      imageUrl: AssetsData.maskGroup,
-      oldPrice: 100,
-      newPrice: 80,
-      isActive: true,
-      // brand: Brand(id: 1, name: ""),
-      category: Categories(id: 1, name: ""),
-      expiryDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      createdAt: DateTime.now().toIso8601String(),
-      productionDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      // unit: Unit(id: 1, name: "name", symbol: "symbol"),
-      updatedAt: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      reviews: [],
-      reviewSummary: ReviewSummary(
-        averageRating: 4.2,
-        totalReviews: 15,
-        // ratings: Ratings(
-        //   fiveStar: 4,
-        //   fourStar: 5,
-        //   threeStar: 5,
-        //   twoStar: 5,
-        //   oneStar: 4,
-        // ),
-      ),
-      // ingredients: [
-      //   Ingredient(id: 4, name: "name", description: "description"),
-      // ],
-    ),
-    ProductModel(
-      id: 2,
-      description: "",
-      name: "",
-      imageUrl: AssetsData.maskGroup,
-      oldPrice: 120,
-      newPrice: 90,
-      isActive: true,
-      // brand: Brand(id: 1, name: ""),
-      category: Categories(id: 1, name: ""),
-      expiryDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      createdAt: DateTime.now().toIso8601String(),
-      productionDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      // unit: Unit(id: 1, name: "name", symbol: "symbol"),
-      updatedAt: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      reviews: [],
-      reviewSummary: ReviewSummary(
-        averageRating: 4.2,
-        totalReviews: 15,
-        // ratings: Ratings(
-        //   fiveStar: 4,
-        //   fourStar: 5,
-        //   threeStar: 5,
-        //   twoStar: 5,
-        //   oneStar: 4,
-        // ),
-      ),
-      // ingredients: [
-      //   Ingredient(id: 4, name: "name", description: "description"),
-      // ],
-    ),
-    ProductModel(
-      id: 3,
-      description: "",
-      name: "",
-      imageUrl: AssetsData.maskGroup,
-      oldPrice: 120,
-      newPrice: 90,
-      isActive: true,
-      // brand: Brand(id: 1, name: ""),
-      category: Categories(id: 1, name: ""),
-      expiryDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      createdAt: DateTime.now().toIso8601String(),
-      productionDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      // unit: Unit(id: 1, name: "name", symbol: "symbol"),
-      updatedAt: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      reviews: [],
-      reviewSummary: ReviewSummary(
-        averageRating: 4.2,
-        totalReviews: 15,
-        // ratings: Ratings(
-        //   fiveStar: 4,
-        //   fourStar: 5,
-        //   threeStar: 5,
-        //   twoStar: 5,
-        //   oneStar: 4,
-        // ),
-      ),
-      // ingredients: [
-      //   Ingredient(id: 4, name: "name", description: "description"),
-      // ],
-    ),
-    ProductModel(
-      id: 1,
-      description: "",
-      name: "",
-      imageUrl: AssetsData.maskGroup,
-      oldPrice: 100,
-      newPrice: 80,
-      isActive: true,
-      // brand: Brand(id: 1, name: ""),
-      category: Categories(id: 1, name: ""),
-      expiryDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      createdAt: DateTime.now().toIso8601String(),
-      productionDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      // unit: Unit(id: 1, name: "name", symbol: "symbol"),
-      updatedAt: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      reviews: [],
-      reviewSummary: ReviewSummary(
-        averageRating: 4.2,
-        totalReviews: 15,
-        // ratings: Ratings(
-        //   fiveStar: 4,
-        //   fourStar: 5,
-        //   threeStar: 5,
-        //   twoStar: 5,
-        //   oneStar: 4,
-        // ),
-      ),
-      // ingredients: [
-      //   Ingredient(id: 4, name: "name", description: "description"),
-      // ],
-    ),
-    ProductModel(
-      id: 2,
-      description: "",
-      name: "",
-      imageUrl: AssetsData.maskGroup,
-      oldPrice: 120,
-      newPrice: 90,
-      isActive: true,
-      // brand: Brand(id: 1, name: ""),
-      category: Categories(id: 1, name: ""),
-      expiryDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      createdAt: DateTime.now().toIso8601String(),
-      productionDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      // unit: Unit(id: 1, name: "name", symbol: "symbol"),
-      updatedAt: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      reviews: [],
-      reviewSummary: ReviewSummary(
-        averageRating: 4.2,
-        totalReviews: 15,
-        // ratings: Ratings(
-        //   fiveStar: 4,
-        //   fourStar: 5,
-        //   threeStar: 5,
-        //   twoStar: 5,
-        //   oneStar: 4,
-        // ),
-      ),
-      // ingredients: [
-      //   Ingredient(id: 4, name: "name", description: "description"),
-      // ],
-    ),
-    ProductModel(
-      id: 3,
-      description: "",
-      name: "",
-      imageUrl: AssetsData.maskGroup,
-      oldPrice: 120,
-      newPrice: 90,
-      isActive: true,
-      // brand: Brand(id: 1, name: ""),
-      category: Categories(id: 1, name: ""),
-      expiryDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      createdAt: DateTime.now().toIso8601String(),
-      productionDate: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      // unit: Unit(id: 1, name: "name", symbol: "symbol"),
-      updatedAt: DateTime.now().add(Duration(days: 365)).toIso8601String(),
-      reviews: [],
-      reviewSummary: ReviewSummary(
-        averageRating: 4.2,
-        totalReviews: 15,
-        // ratings: Ratings(
-        //   fiveStar: 4,
-        //   fourStar: 5,
-        //   threeStar: 5,
-        //   twoStar: 5,
-        //   oneStar: 4,
-        // ),
-      ),
-      // ingredients: [
-      //   Ingredient(id: 4, name: "name", description: "description"),
-      // ],
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -237,8 +51,8 @@ class _HomeDetailsState extends State<HomeDetails> {
                         children: [
                           const CircleAvatar(
                             radius: 22,
-                            backgroundImage: NetworkImage(
-                              'https://i.pravatar.cc/150?img=3',
+                            backgroundImage: AssetImage(
+                              AssetsData.profileImage,
                             ),
                           ),
                           const Spacer(),
@@ -368,7 +182,12 @@ class _HomeDetailsState extends State<HomeDetails> {
                   // SizedBox(height: 5.h),
                   SizedBox(
                     height: 60.h,
-                    child: GridViewBuilder(productList: productList),
+                    child: BlocProvider(
+                      create: (context) => ProductCubit(ProductRepoImplement(
+                        productApiService:ApiService(dio: Dio()) ,
+                      )),
+                      child: GridViewBuilder(productList: []),
+                    ),
                   ),
                 ],
               ),

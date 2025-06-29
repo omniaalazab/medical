@@ -49,6 +49,38 @@ class ApiService {
     }
   }
 
+  Future<dynamic> post({
+    required String endPoint,
+    required Map<String, dynamic> body,
+  }) async {
+    try {
+      final response = await dio.post(
+        '${Endpoints.baseUrl}$endPoint',
+        data: body,
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return response.data;
+      } else {
+        throw Exception('Failed to post data: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Network error: $e');
+    }
+  }
+
+  Future<dynamic> delete({required String endPoint}) async {
+    try {
+      final response = await dio.delete('${Endpoints.baseUrl}$endPoint');
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        return response.data;
+      } else {
+        throw Exception('Failed to delete data: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Network error: $e');
+    }
+  }
+
   Future<ProductUnifiedModel> fetchSingleProduct(int id) async {
     try {
       debugPrint('Fetching product with ID: $id');
