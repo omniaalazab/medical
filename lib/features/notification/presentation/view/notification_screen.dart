@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical/core/constant_text.dart';
+import 'package:medical/core/dependency_injection/service_locator.dart';
 import 'package:medical/core/utils/styles.dart';
 import 'package:medical/features/home/presentation/view/home.dart';
-import 'package:medical/features/notification/cubit/notification_cubit.dart';
-import 'package:medical/features/notification/cubit/notification_state.dart';
+import 'package:medical/features/notification/presentation/cubit/notification_cubit.dart';
+import 'package:medical/features/notification/presentation/cubit/notification_state.dart';
 import 'package:medical/features/notification/data/model/notification_model.dart';
 import 'package:medical/features/notification/data/repository/notification_repository.dart';
 import 'package:medical/features/notification/presentation/view/widgets/notification_listtile.dart';
 import 'package:sizer/sizer.dart';
 
 class NotificationScreen extends StatefulWidget {
-  final NotificationRepository repository;
-  final VoidCallback onBackPressed;
-
-  const NotificationScreen({
-    super.key,
-    required this.repository,
-    required this.onBackPressed,
-  });
+  const NotificationScreen({super.key});
 
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
@@ -53,8 +47,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          NotificationCubit(widget.repository)..fetchNotifications(),
+      create: (context) => sl<NotificationCubit>(),
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(

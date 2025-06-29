@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical/features/notification/cubit/notification_state.dart';
+import 'package:medical/features/notification/presentation/cubit/notification_state.dart';
 import 'package:medical/features/notification/data/repository/notification_repository.dart';
 
 class NotificationCubit extends Cubit<NotificationState> {
