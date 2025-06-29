@@ -1,21 +1,23 @@
-// import 'package:medical/core/models/product_model.dart';
+// <<<<<<< HEAD
+// // import 'package:medical/core/models/product_model.dart';
+// =======
 
-// class SearchStates {
-//   const SearchStates();
-// }
+// import 'package:medical/core/models/product_model/product_model.dart';
+// >>>>>>> 6a7d5d21fabd2232c7324fe9b8b9d390be91c120
 
-// class SearchInitialState extends SearchStates {}
+// // class SearchStates {
+// //   const SearchStates();
+// // }
 
-// class SearchLoadingState extends SearchStates {}
+// // class SearchInitialState extends SearchStates {}
 
-// class SearchSuccessState extends SearchStates {
-//   final List<ProductModel> searchBooks;
+// // class SearchLoadingState extends SearchStates {}
 
-//   const SearchSuccessState({required this.searchBooks});
-// }
+// //   const SearchSuccessState({required this.searchBooks});
+// // }
 
-// class SearchFailureState extends SearchStates {
-//   final String errMessage;
+// // class SearchFailureState extends SearchStates {
+// //   final String errMessage;
 
-//   const SearchFailureState({required this.errMessage});
-// }
+// //   const SearchFailureState({required this.errMessage});
+// // }

@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/colors.dart';
@@ -8,6 +9,8 @@ import 'package:medical/features/cart/presentation/view/cart.dart';
 import 'package:medical/features/home/presentation/view/home_details.dart';
 import 'package:medical/features/notification/data/repository/notification_repository.dart';
 import 'package:medical/features/notification/presentation/view/notification_screen.dart';
+import 'package:medical/features/profile/data/repos/profile_repo_implement.dart';
+import 'package:medical/features/profile/presentation/cubit/cubit/profile_info_cubit.dart';
 import 'package:medical/features/profile/presentation/views/profile_screen.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,7 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
     {'screen': const HomeDetails()},
     {'screen': NotificationScreen()},
     {'screen': const CartView()},
-    {'screen': ProfileScreen()},
+    {
+      'screen': BlocProvider(
+        create: (context) => ProfileInfoCubit(
+          ProfileRepoImplement(apiService: ApiService(dio: Dio())),
+        ),
+        child: ProfileScreen(),
+      ),
+    },
   ];
   @override
   Widget build(BuildContext context) {

@@ -63,7 +63,9 @@ class Data {
     'gender': gender,
     'bio': bio,
     'profile_image': profileImage,
-    'profile_image_url': profileImageUrl,
+    'profile_image_url':
+        profileImageUrl ??
+        "https://static.vecteezy.com/system/resources/thumbnails/042/535/195/small_2x/profile-icon-illustration-png.png",
     'is_active': isActive,
     'last_login_human': lastLoginHuman,
     'user': user?.toJson(),

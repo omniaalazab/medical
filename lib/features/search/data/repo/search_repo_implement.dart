@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/api/endpoints.dart';
 import 'package:medical/core/errors/failure.dart';
-import 'package:medical/core/models/product_model.dart';
+import 'package:medical/core/models/product_model/product_model.dart';
 import 'package:medical/features/search/data/repo/search_repo.dart';
 
 class SearchRepoImplement extends SearchRepo {
@@ -13,14 +13,14 @@ class SearchRepoImplement extends SearchRepo {
     : _apiService = apiService;
 
   @override
-  Future<Either<Failure, List<ProductModel>>> fetchSearchResult({
+  Future<Either<Failure, List<ProductUnifiedModel>>> fetchSearchResult({
     required String query,
   }) async {
     try {
       var data = await _apiService.get(endPoint: Endpoints.search);
-      List<ProductModel> searchBooks = [];
+      List<ProductUnifiedModel> searchBooks = [];
       for (var item in data['items']) {
-        searchBooks.add(ProductModel.fromJson(item));
+        searchBooks.add(ProductUnifiedModel.fromJson(item));
       }
       return right(searchBooks);
     } catch (e) {
