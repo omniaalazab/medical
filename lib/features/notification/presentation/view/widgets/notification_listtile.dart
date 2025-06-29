@@ -25,10 +25,10 @@ class NotificationListTile extends StatelessWidget {
         style: Styles.textStyle13.copyWith(fontWeight: FontWeight.w400),
       ),
       onTap: onTap,
-      trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.red),
-        onPressed: onDelete,
-      ),
+      //   trailing: IconButton(
+      //     icon: const Icon(Icons.delete, color: Colors.red),
+      //     onPressed: onDelete,
+      //   ),
     );
   }
 }
