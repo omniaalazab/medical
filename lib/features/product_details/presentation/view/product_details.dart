@@ -31,7 +31,8 @@ class _ProductDetailsState extends State<ProductDetails> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => sl<ProductDetailsCubit>()..fetchProductById(1),
+          create: (_) =>
+              sl<ProductDetailsCubit>()..fetchProductById(widget.productId),
         ),
         BlocProvider(create: (_) => sl<CartCubit>()),
       ],
@@ -54,14 +55,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => NotificationScreen(
-                            repository: sl.get(),
-                            onBackPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ),
+                        MaterialPageRoute(builder: (_) => NotificationScreen()),
                       );
                     },
                     child: SvgPicture.asset(AssetsData.notifications),
