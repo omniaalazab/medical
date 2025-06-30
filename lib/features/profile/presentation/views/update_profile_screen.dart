@@ -35,6 +35,12 @@ class UpdateProfileScreen extends StatelessWidget {
           inAsyncCall: state is ProfileInfoLoading,
           child: Scaffold(
             appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_rounded),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
               title: const Text('Update Profile'),
               backgroundColor: Colors.white,
             ),

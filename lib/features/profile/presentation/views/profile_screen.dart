@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical/core/api/api_services.dart';
 import 'package:medical/core/api_constant.dart';
+import 'package:medical/features/home/presentation/view/home.dart';
 import 'package:medical/features/profile/data/repos/profile_repo_implement.dart';
 import 'package:medical/features/profile/presentation/cubit/cubit/profile_info_cubit.dart';
 import 'package:medical/features/profile/presentation/cubit/cubit/profile_info_state.dart';
@@ -23,6 +24,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_rounded),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const HomeScreen()),
+                );
+              },
+            ),
             title: const Text('My Profile'),
             backgroundColor: Colors.white,
             elevation: 0,
