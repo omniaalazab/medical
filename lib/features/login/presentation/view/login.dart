@@ -138,10 +138,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         BlocProvider.of<AuthCubit>(
                           context,
                         ).sendPhone(_phoneController.text);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => HomeScreen()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (_) => HomeScreen()),
+                        // );
                         print('Phone: ${_phoneController.text}');
                       },
                     ),

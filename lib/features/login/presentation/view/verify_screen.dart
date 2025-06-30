@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical/features/home/presentation/view/home.dart';
 import 'package:medical/features/login/presentation/cubit/auth_cubit.dart';
 import 'package:medical/features/login/presentation/cubit/auth_state.dart';
 
 class VerifyScreen extends StatefulWidget {
   final String phoneNumber;
 
-  const VerifyScreen({Key? key, required this.phoneNumber}) : super(key: key);
+  const VerifyScreen({super.key, required this.phoneNumber});
 
   @override
   State<VerifyScreen> createState() => _VerifyScreenState();
@@ -113,6 +114,10 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     if (state is AuthSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Verified successfully')),
+                      );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => HomeScreen()),
                       );
                     } else if (state is AuthError) {
                       ScaffoldMessenger.of(
