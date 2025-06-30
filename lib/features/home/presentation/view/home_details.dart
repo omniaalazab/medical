@@ -103,7 +103,7 @@ class _HomeDetailsState extends State<HomeDetails> {
                         ),
                         const SizedBox(height: 20),
                         const Text(
-                          'Hi, Rahul',
+                          'Hi, ',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -272,7 +272,14 @@ class _HomeDetailsState extends State<HomeDetails> {
                             ConstantText.more,
                             style: Styles.textStyle14,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CategoryListing(),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
