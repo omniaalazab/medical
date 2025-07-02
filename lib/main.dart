@@ -15,6 +15,8 @@ import 'package:medical/core/dependency_injection/service_locator.dart';
 
 import 'package:sizer/sizer.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() {
   setupLocator();
   ();
@@ -40,7 +42,12 @@ class MyApp extends StatelessWidget {
         if (state == ConnectivityStatus.disconnected) {
           Navigator.of(
             context,
-          ).pushReplacement(MaterialPageRoute(builder: (_) => OfflineScreen()));
+          ).push(MaterialPageRoute(builder: (_) => const OfflineScreen()));
+        } else if (state == ConnectivityStatus.connected) {
+          // Pop OfflineScreen if it is on top
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          }
         }
       },
       child: Sizer(
@@ -49,6 +56,7 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 AuthCubit(AuthRepository(ApiService(dio: Dio()))),
             child: MaterialApp(
+              navigatorKey: navigatorKey,
               debugShowCheckedModeBanner: false,
 
               home: SplashScreen(),

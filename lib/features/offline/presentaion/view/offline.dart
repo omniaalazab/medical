@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medical/core/constant_text.dart';
 import 'package:medical/core/utils/assets.dart';
 import 'package:medical/core/utils/styles.dart';
+import 'package:medical/features/home/presentation/view/home.dart';
 import 'package:sizer/sizer.dart';
 
 class OfflineScreen extends StatelessWidget {
@@ -25,7 +26,12 @@ class OfflineScreen extends StatelessWidget {
             ),
             SizedBox(height: 5.h),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => HomeScreen()),
+                );
+              },
               child: Text(
                 ConstantText.tryAgain,
                 style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w500),
